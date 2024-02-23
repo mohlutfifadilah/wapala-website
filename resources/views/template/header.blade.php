@@ -54,10 +54,28 @@
     background: transparent;
 }
 #total{
-    margin: 20px;
-  width: 200px;
-  height: 200px;
-  position: relative;
+    margin: 30px auto;
+    margin-top: 0;
+    width: 70px;
+    height: 70px;
+}
+#ak{
+    margin: 30px auto;
+    margin-top: 0;
+    width: 70px;
+    height: 70px;
+}
+#alb{
+    margin: 30px auto;
+    margin-top: 0;
+    width: 70px;
+    height: 70px;
+}
+#ab{
+    margin: 30px auto;
+    margin-top: 0;
+    width: 70px;
+    height: 70px;
 }
     </style>
   </head>

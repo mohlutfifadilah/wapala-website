@@ -26,15 +26,15 @@
                 <div class="container text-center py-5 my-5">
                     <div class="row">
                         <div class="col">
-                            <img src="{{ asset('icon.png') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('13.jpg') }}" alt="" class="img-fluid">
                             <h3>Rock Climbing</h3>
                         </div>
                         <div class="col">
-                            <img src="{{ asset('icon.png') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('15.jpg') }}" alt="" class="img-fluid">
                             <h3>Gunung Hutan</h3>
                         </div>
                         <div class="col">
-                            <img src="{{ asset('icon.png') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('17.jpg') }}" alt="" class="img-fluid">
                             <h3>Caving</h3>
                         </div>
                     </div>
