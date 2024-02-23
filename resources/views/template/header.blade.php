@@ -86,9 +86,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ $segment === 'kontak' ? 'active router-link-active' : '' }}" href="/kontak">Kontak</a>
                                 </li>
-                                {{-- <li class="nav-item mr-2">
+                                <li class="nav-item mr-2">
                                     <a class="nav-link btn btn-primary" href="#">Login</a>
-                                </li> --}}
+                                </li>
                             </ul>
                         </div>
                     </div>
