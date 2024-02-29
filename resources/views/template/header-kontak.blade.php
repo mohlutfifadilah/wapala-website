@@ -6,6 +6,7 @@
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="icon.png">
     <style>
         body {
@@ -19,7 +20,7 @@
         .wrap{
   background-image:url('{{ asset('IMG_6120 (1).JPG') }}');
   width:100%;
-  height:100vh;
+  height:40vh;
   background-size:cover;
   position: relative;
 }
@@ -49,33 +50,29 @@
       color: white; /* Adjust color for visibility */
       text-align: center; /* Center align text */
     }
-    .parallax-window {
-    min-height: 400px;
-    background: transparent;
+    .portfolio-menu{
+	text-align:center;
 }
-#total{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
+.portfolio-menu ul li{
+	display:inline-block;
+	margin:0;
+	list-style:none;
+	padding:10px 15px;
+	cursor:pointer;
+	-webkit-transition:all 05s ease;
+	-moz-transition:all 05s ease;
+	-ms-transition:all 05s ease;
+	-o-transition:all 05s ease;
+	transition:all .5s ease;
 }
-#ak{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
+
+.portfolio-item{
+	/*width:100%;*/
 }
-#alb{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#ab{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
+.portfolio-item .item{
+	/*width:303px;*/
+	float:left;
+	margin-bottom:10px;
 }
     </style>
   </head>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\KontakController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\ProfilController;
@@ -24,5 +26,7 @@ Route::get('/', function () {
 });
 
 Route::resource('profil', ProfilController::class);
+Route::resource('galeri', GaleriController::class);
+Route::resource('kontak', KontakController::class);
 
 

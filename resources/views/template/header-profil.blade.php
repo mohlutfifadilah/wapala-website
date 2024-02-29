@@ -19,7 +19,7 @@
         .wrap{
   background-image:url('{{ asset('IMG_6120 (1).JPG') }}');
   width:100%;
-  height:100vh;
+  height:40vh;
   background-size:cover;
   position: relative;
 }

@@ -1,6 +1,15 @@
 @section('title', 'Profil - WAPALA IT Telkom')
-@include('template.header')
-        <section class="my-5">
+@section('jumbotron')
+<div class="jumbotron mt-5 pt-5">
+                <h1 class="display-3 fw-bold">Profil</h1>
+                <p><em>Beranda > Profil</em></p>
+                {{-- <small class="text-muted">Tertarik ?</small><br>
+                <a href="" class="btn btn-primary">Daftar Sekarang</a> --}}
+            </div>
+            <div class="banner"></div>
+@endsection
+@include('template.header-profil')
+        <section class="my-4">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -50,20 +59,60 @@
             </div>
         </section>
         <section class="my-5">
-            <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('20240223_141045_0000.png') }}">
-                <div class="container text-center py-5 my-5">
-                    <div class="row">
-                        <div class="col">
-                            <img src="{{ asset('icon.png') }}" alt="" class="img-fluid">
-                            <h3>Rock Climbing</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="{{ asset('Logo WAPALA.png') }}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col">
+                        <h4>Rantai</h4>
+                        <small class="text-justify">
+                            dawidawidnawlidnaw
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="my-5">
+            <div class="container">
+                <div class="row row-cols-4">
+                    <div class="col">
+                        <div class="card" style="width: 16rem;">
+                            <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Nama Angkatan</h5>
+                                <p class="card-text">WAPALA I</p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <img src="{{ asset('icon.png') }}" alt="" class="img-fluid">
-                            <h3>Gunung Hutan</h3>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 16rem;">
+                            <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
-                        <div class="col">
-                            <img src="{{ asset('icon.png') }}" alt="" class="img-fluid">
-                            <h3>Caving</h3>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 16rem;">
+                            <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 16rem;">
+                            <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,6 +193,5 @@
             });
 
             bar.animate(1.0);  // Number from 0.0 to 1.0
-
         </script>
 @include('template.footer')
