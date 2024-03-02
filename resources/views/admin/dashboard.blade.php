@@ -1,6 +1,14 @@
 @section('title', 'WAPALA IT Telkom')
 @include('admin.template.header')
 @include('admin.template.sidebar')
+@if(session('success'))
+<div id="alertt" class="alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert">
+    <i class="bi bi-check-circle me-1"></i>
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <main id="main" class="main">
 
     <div class="pagetitle">

@@ -13,6 +13,13 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script>
+    // Menunggu 3 detik sebelum menyembunyikan alert
+    setTimeout(function() {
+        var alert = document.getElementById('alertt');
+        alert.style.display = 'none';
+    }, 5000);
+  </script>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>

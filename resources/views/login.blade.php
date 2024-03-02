@@ -32,6 +32,13 @@
 </head>
 
 <body>
+@if(session('error'))
+<div id="error-alert" class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert">
+    <i class="bi bi-exclamation-octagon me-1"></i>
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
   <main>
     <div class="container">
@@ -52,13 +59,14 @@
 
                 <div class="card-body">
 
-                  <div class="pt-4 pb-2">
+                  <div class="pt-4 pb-2 text-center">
+                    <img src="{{ asset('Logo WAPALA.png') }}" alt="" style="width: 40px; height: 70px;">
                     <h5 class="card-title text-center pb-0 fs-4">Silahkan login</h5>
                     <p class="text-center small">Masukkan email & password anda</p>
                   </div>
 
                   <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('login') }}">
-
+                    @csrf
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Email</label>
                       <div class="input-group has-validation">
@@ -100,7 +108,13 @@
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  <script>
+    // Menunggu 3 detik sebelum menyembunyikan alert
+    setTimeout(function() {
+        var alert = document.getElementById('error-alert');
+        alert.style.display = 'none';
+    }, 5000);
+  </script>
   <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

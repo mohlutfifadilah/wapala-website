@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\ProfilController;
@@ -25,18 +27,12 @@ Route::get('/', function () {
     return view('main', [ 'segment' => $segment ] );
 });
 
-Route::get('/login', function(){
-    return view('login');
-});
+Route::get('/login', [LoginController::class, 'index']);
 
 Route::resource('profil', ProfilController::class);
 Route::resource('galeri', GaleriController::class);
 Route::resource('kontak', KontakController::class);
 
-Route::get('/admin',  function(){
-    return view('admin.dashboard');
-});
+Route::get('/dashboard',  [DashboardController::class, 'index']);
 
-Route::post('/login', function(){
-
-})->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
