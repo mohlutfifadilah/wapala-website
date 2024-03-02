@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class GaleriController extends Controller
+class AngkatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,6 @@ class GaleriController extends Controller
     public function index()
     {
         //
-        if (!Auth::check()){
-            $segment = request()->segment(1);
-            if ($segment===null){
-                $segment = '/galeri';
-            }
-            return view('galeri', [ 'segment' => $segment ] );
-        } else {
-            dd('dawda');
-        }
     }
 
     /**

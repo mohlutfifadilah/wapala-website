@@ -17,7 +17,7 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('dasboard')->withSuccess('Selamat datang, Admin');
+            return redirect('dashboard')->withSuccess('Selamat datang, Admin');
         }
 
         return redirect("login")->with('error', 'Email atau Password salah!');
@@ -27,6 +27,6 @@ class LoginController extends Controller
         Session::flush();
         Auth::logout();
 
-        return Redirect('login');
+        return Redirect('/');
     }
 }

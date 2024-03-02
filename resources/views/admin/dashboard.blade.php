@@ -2,7 +2,7 @@
 @include('admin.template.header')
 @include('admin.template.sidebar')
 @if(session('success'))
-<div id="alertt" class="alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert">
+<div id="alertt" class="alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert" style="z-index: 999;">
     <i class="bi bi-check-circle me-1"></i>
     {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -15,7 +15,7 @@
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Beranda</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
