@@ -25,8 +25,18 @@ Route::get('/', function () {
     return view('main', [ 'segment' => $segment ] );
 });
 
+Route::get('/login', function(){
+    return view('login');
+});
+
 Route::resource('profil', ProfilController::class);
 Route::resource('galeri', GaleriController::class);
 Route::resource('kontak', KontakController::class);
 
+Route::get('/admin',  function(){
+    return view('admin.dashboard');
+});
 
+Route::post('/login', function(){
+
+})->name('login');
