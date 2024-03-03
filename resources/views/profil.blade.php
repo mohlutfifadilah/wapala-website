@@ -59,17 +59,9 @@
             </div>
         </section>
         <section class="my-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <img src="{{ asset('Logo WAPALA.png') }}" alt="" class="img-fluid">
-                    </div>
-                    <div class="col">
-                        <h4>Rantai</h4>
-                        <small class="text-justify">
-                            dawidawidnawlidnaw
-                        </small>
-                    </div>
+            <div class="row">
+                <div class="col">
+                    <img src="{{ asset('arti-logo.png') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </section>

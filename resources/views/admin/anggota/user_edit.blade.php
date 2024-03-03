@@ -1,176 +1,209 @@
-@extends('admin/template/master')
+@section('title', 'Edit Anggota')
+@include('admin.template.header')
+@include('admin.template.sidebar')
+@if(session('success'))
+<div id="alertt" class="alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert" style="z-index: 999;">
+    <i class="bi bi-check-circle me-1"></i>
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+@if(session('error'))
+<div id="error-alert" class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0 m-3" role="alert">
+    <i class="bi bi-exclamation-octagon me-1"></i>
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
-@section('title', 'Data Pengguna')
+<main id="main" class="main">
 
-@section('vendor-style')
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
+    <div class="pagetitle">
+      <h1>Anggota</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/dashboard">Beranda</a></li>
+          <li class="breadcrumb-item">Data</li>
+          <li class="breadcrumb-item active">Edit Anggota</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-@endsection
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
 
-@section('vendor-script')
-    <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/cleavejs/cleave.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/cleavejs/cleave-phone.js') }}"></script>
-@endsection
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Edit Data Anggota</h5>
 
-@section('content')
-
-    {{-- <div class="row g-4 mb-4">
-  <div class="col-sm-6 col-xl-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="avatar">
-            <div class="avatar-initial bg-label-primary rounded">
-              <div class="mdi mdi-account-outline mdi-24px"></div>
-            </div>
-          </div>
-          <div class="ms-3">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0">8,458</h5>
-              <div class="mdi mdi-chevron-down text-danger mdi-24px"></div>
-              <small class="text-danger">8.1%</small>
-            </div>
-            <small class="text-muted">New Customers</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xl-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="avatar">
-            <div class="avatar-initial bg-label-warning rounded">
-              <div class="mdi mdi-poll mdi-24px"></div>
-            </div>
-          </div>
-          <div class="ms-3">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0">$28.5K</h5>
-              <div class="mdi mdi-chevron-up text-success mdi-24px"></div>
-              <small class="text-success">18.2%</small>
-            </div>
-            <small class="text-muted">Total Profit</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xl-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="avatar">
-            <div class="avatar-initial bg-label-info rounded">
-              <div class="mdi mdi-trending-up mdi-24px"></div>
-            </div>
-          </div>
-          <div class="ms-3">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0">2,450K</h5>
-              <div class="mdi mdi-chevron-down text-danger mdi-24px"></div>
-              <small class="text-danger">24.6%</small>
-            </div>
-            <small class="text-muted">New Transaction</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-xl-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div class="avatar">
-            <div class="avatar-initial bg-label-success rounded">
-              <div class="mdi mdi-currency-usd mdi-24px"></div>
-            </div>
-          </div>
-          <div class="ms-3">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0">$48.2K</h5>
-              <div class="mdi mdi-chevron-down text-success mdi-24px"></div>
-              <small class="text-success">22.5%</small>
-            </div>
-            <small class="text-muted">Total Revenue</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div> --}}
-
-    <!-- Users List Table -->
-    <div class="card">
-        <div class="card-header p-4">
-            <h5 class="card-title">Edit Data Pengguna</h5>
-        </div>
-        <div class="card-body p-4">
-            <form action="{{ route('users.update', $user->id) }}" method="post">
+              <!-- Floating Labels Form -->
+              <form class="row g-3" action="{{ route('user.update', $user->id) }} " method="POST">
                 @csrf
                 @method('PUT')
-                <div class="row">
-                    <div class="col-12">
-                      @php
-                        $id_role = \App\Models\Role::find($user->id_role);
-                      @endphp
-                        <div class="form-floating form-floating-outline mb-4">
-                            <select id="role" class="select2 form-select" name="role">
-                                <option value="{{ $id_role->id }}" selected disabled>{{ $id_role->name }}</option>
-                                @foreach ($role as $r)
-                                    <option value="{{ $r->id }}">{{ $r->name }}</option>
-                                @endforeach
-                            </select>
-                            <label for="country">Role</label>
+                @php
+                    $id_prodi = \App\Models\Prodi::find($user->id_prodi);
+                    $id_status = \App\Models\Status::find($user->id_status);
+                @endphp
+                <div class="col-md-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingName" placeholder="Nama Lengkap" name="nama" value="{{ $user->nama }}" required>
+                    <label for="floatingName">Nama Lengkap</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingProdi" aria-label="State" name="prodi" required>
+                      <option selected disabled value="{{ $id_prodi->id }}">{{ $id_prodi->nama_prodi }}</option>
+                      @foreach ($prodi as $p)
+                        <option value="{{ $p->id }}">{{ $p->nama_prodi }}</option>
+                      @endforeach
+                    </select>
+                    <label for="floatingProdi">Program Studi</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-floating">
+                    <select class="form-select" id="floatingTahun" aria-label="State" name="tahun" required>
+                      <option selected disabled value="{{ $user->tahun }}">{{ $user->tahun }}</option>
+                        <?php
+                            // Mendapatkan tahun saat ini
+                            $currentYear = date("Y");
+
+                            // Menentukan tahun mulai (misalnya 25 tahun terakhir)
+                            $startYear = $currentYear - 25;
+
+                            // Loop untuk menghasilkan daftar tahun
+                            for ($year = $currentYear; $year >= $startYear; $year--) {
+                                echo '<option value="' . $year . '">' . $year . '</option>';
+                            }
+                        ?>
+                    </select>
+                    <label for="floatingTahun">Tahun</label>
+                    <small class="text-danger ms-2">* Tahun masuk kuliah</small>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-check mx-auto">
+                                    <input class="form-check-input" type="radio" name="jk" id="gridRadios1" value="L" {{ $user->jenis_kelamin === 'L' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        Laki-Laki
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" class="form-control" id="name" placeholder="Isi Nama" name="name"
-                                aria-label="Isi Nama" value="{{ $user->name }}"/>
-                            <label for="name">Nama Lengkap</label>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="jk" id="gridRadios2" value="P" {{ $user->jenis_kelamin === 'P' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="gridRadios2">
+                                        Perempuan
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="email" class="form-control" placeholder="Isi Email"
-                                aria-label="Isi Email" name="email" value="{{ $user->email }}"/>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="job_or_position" class="form-control phone-mask"
-                                placeholder="Jabatan/Pekerjaan" aria-label="" name="job_or_position" value="{{ $user->job_or_position }}"/>
-                            <label for="job_or_position">Jabatan/Pekerjaan</label>
-                        </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="no_wa" class="form-control phone-mask"
-                                placeholder="Jabatan/Pekerjaan" aria-label="" name="no_wa" value="{{ $user->no_wa }}"/>
-                            <label for="no_wa">No Handphone</label>
-                        </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <input type="text" id="age" class="form-control" placeholder="Umur" aria-label="jdoe1"
-                                name="age" value="{{ $user->age }}"/>
-                            <label for="age">Umur</label>
-                        </div>
-                        <div class="form-floating form-floating-outline mb-4">
-                            <textarea class="form-control h-px-150" id="address" placeholder="Desa, Kecamatan" name="address">{{ $user->address }}</textarea>
-                            <label for="address">Alamat</label>
-                        </div>
-                        <button type="submit" class="btn btn-warning me-sm-3 me-1 data-submit">Edit</button>
-                        <a href="{{ route('users.index') }}" class="btn btn-label-secondary">Batal</a>
-                        {{-- <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Batal</button> --}}
                     </div>
                 </div>
-            </form>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingnia" placeholder="Password" value="{{ $user->nia }}" oninput="handleInput(this)" onfocus="handleFocus(this)" name="nia" required>
+                    <label for="floatingnia">NIA</label>
+                    <small class="text-danger ms-2">* NIA:WPL.**.***.****</small>
+                    <small class="float-end me-3"><a href="" id="resetNIA">Reset</a></small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <select class="form-select" id="floatingStatus" aria-label="State" name="status" required>
+                      <option selected disabled value="{{ $id_status->nama_status }}">{{ $id_status->nama_status }}</option>
+                      @foreach ($status as $s)
+                        <option value="{{ $s->id }}">{{ $s->nama_status }}</option>
+                      @endforeach
+                    </select>
+                    <label for="floatingStatus">Status</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" value="{{ $user->email }}" required>
+                    <label for="floatingEmail">Email</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <button type="submit" class="btn btn-warning text-white">Edit</button>
+                  {{-- <button type="reset" class="btn btn-secondary">Reset</button> --}}
+                </div>
+              </form><!-- End floating Labels Form -->
+
+            </div>
+          </div>
+
         </div>
-    </div>
-@endsection
+      </div>
+    </section>
+
+</main><!-- End #main -->
+<script>
+      document.getElementById('resetNIA').addEventListener('click', function() {
+        // Menghentikan perilaku default dari tombol reset
+        event.preventDefault();
+        // Mengambil elemen input dengan id 'floatingnia'
+        let input = document.getElementById('floatingnia');
+
+        // Mengatur nilai input kembali menjadi "NIA:WPL."
+        input.value = 'NIA:WPL.';
+
+        // Memindahkan fokus ke awal input
+        input.focus();
+      });
+
+    function handleInput(input) {
+        // Mengambil nilai input
+        let value = input.value;
+
+        // Pisahkan nilai input menjadi array kata
+        let words = value.split(' ');
+
+        // Jika ada kata yang dihapus (panjang array kurang dari 4)
+        if (value.length < 8) {
+            // Ganti nilai input kembali menjadi "NIA:WPL."
+            input.value = 'NIA:WPL.';
+        }
+        // Mengubah nilai input berdasarkan panjang karakter
+        if (value.length === 10) {
+            // Tambahkan dua digit pertama nomor
+            input.value = value + '.';
+        } else if (value.length === 14) {
+            // Tambahkan tanda titik setelah dua digit berikutnya
+            input.value = value + '.';
+        } else if (value.length === 18) {
+            // Tambahkan tanda titik setelah tiga digit berikutnya
+            input.value = value;
+        }
+    }
+
+    function handleFocus(input) {
+        // Memastikan bahwa kursor berada di awal input
+        input.selectionStart = input.selectionEnd = input.value.indexOf(':') + 1;
+    }
+
+    // function handleKeyDown(event) {
+    //     // Mendapatkan key yang ditekan
+    //     let key = event.key;
+
+    //     // Mencegah input jika bukan angka atau jika kursor tidak berada di akhir input
+    //     if (!/^\d$/.test(key) || event.target.selectionStart < event.target.value.indexOf(':') + 6) {
+    //         event.preventDefault();
+    //     }
+    // }
+  </script>
+@include('admin.template.footer')
