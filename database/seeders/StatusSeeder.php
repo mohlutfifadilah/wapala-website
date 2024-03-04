@@ -17,12 +17,15 @@ class StatusSeeder extends Seeder
         //
         \App\Models\Status::create([
             'nama_status' => 'AK',
+            'kepanjangan' => 'Anggota Kehormatan'
         ]);
         \App\Models\Status::create([
             'nama_status' => 'ALB',
+            'kepanjangan' => 'Anggota Luar Biasa'
         ]);
         \App\Models\Status::create([
             'nama_status' => 'AB',
+            'kepanjangan' => 'Anggota Biasa'
         ]);
     }
 }

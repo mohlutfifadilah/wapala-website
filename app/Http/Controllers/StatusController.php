@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -14,6 +15,8 @@ class StatusController extends Controller
     public function index()
     {
         //
+        $status = Status::all();
+        return view('admin.status.index',compact('status'));
     }
 
     /**
@@ -24,6 +27,8 @@ class StatusController extends Controller
     public function create()
     {
         //
+        $status = Status::all();
+        return view('admin.status.status_add', compact('status'));
     }
 
     /**
@@ -35,6 +40,12 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         //
+        Status::create([
+            'nama_status' => $request->status,
+            'kepanjangan' => $request->kepanjangan,
+        ]);
+
+        return redirect()->route('status.index')->withSuccess('Data Status berhasil ditambahkan');
     }
 
     /**
@@ -57,6 +68,8 @@ class StatusController extends Controller
     public function edit($id)
     {
         //
+        $status = Status::find($id);
+        return view('admin.status.status_edit', compact('status'));
     }
 
     /**
@@ -69,6 +82,14 @@ class StatusController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $status = Status::find($id);
+
+        $status->update([
+            'nama_status' => $request->status,
+            'kepanjangan' => $request->kepanjangan,
+        ]);
+
+        return redirect()->route('status.index')->withSuccess('Data Status berhasil diedit');
     }
 
     /**
@@ -80,5 +101,9 @@ class StatusController extends Controller
     public function destroy($id)
     {
         //
+        $status = Status::find($id);
+        $status->delete();
+
+        return redirect()->route('status.index')->withSuccess('Data Status berhasil dihapus');
     }
 }

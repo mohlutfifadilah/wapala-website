@@ -20,19 +20,19 @@
       </li><!-- End -->
       <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) != 'divisi' ? 'collapsed' : '' }}" href="{{ route('divisi.index') }}">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-gear"></i>
           <span>Divisi</span>
         </a>
       </li><!-- End -->
       <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) != 'status' ? 'collapsed' : '' }}" href="{{ route('status.index') }}">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-info-square"></i>
           <span>Status Keanggotaan</span>
         </a>
       </li><!-- End -->
       <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) != 'prodi' ? 'collapsed' : '' }}" href="{{ route('prodi.index') }}">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-journal-bookmark"></i>
           <span>Program Studi</span>
         </a>
       </li><!-- End -->
@@ -41,7 +41,7 @@
 
       <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) != 'galeri' ? 'collapsed' : '' }}" href="{{ route('galeri.index') }}">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-card-image"></i>
           <span>Galeri</span>
         </a>
       </li><!-- End -->
