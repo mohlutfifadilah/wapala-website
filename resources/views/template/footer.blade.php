@@ -1,5 +1,5 @@
 <section class="mt-5">
-            <div class="bg-primary p-4">
+            <div class="bg-primary p-1">
                 <div class="container text-center">
                     <div class="row">
                         <div class="col">

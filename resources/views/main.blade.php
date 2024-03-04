@@ -36,17 +36,17 @@
     <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('20240223_141045_0000.png') }}">
         <div class="container text-center py-5 my-5">
             <div class="row">
-                <div class="col">
-                    <img src="{{ asset('13.jpg') }}" alt="" class="img-fluid">
-                    <h3>Rock Climbing</h3>
+                <div class="col mt-5 pt-2">
+                    <img src="{{ asset('15.jpg') }}" alt="" class="img-fluid divisi">
+                    <h3 class="mt-4 text-white">Rock Climbing</h3>
                 </div>
-                <div class="col">
-                    <img src="{{ asset('15.jpg') }}" alt="" class="img-fluid">
-                    <h3>Gunung Hutan</h3>
+                <div class="col mt-5 pt-2">
+                    <img src="{{ asset('17.jpg') }}" alt="" class="img-fluid divisi">
+                    <h3 class="mt-4 text-white">Gunung Hutan</h3>
                 </div>
-                <div class="col">
-                    <img src="{{ asset('17.jpg') }}" alt="" class="img-fluid">
-                    <h3>Caving</h3>
+                <div class="col mt-5 pt-2">
+                    <img src="{{ asset('13.jpg') }}" alt="" class="img-fluid divisi">
+                    <h3 class="mt-4 text-white">Caving</h3>
                 </div>
             </div>
         </div>

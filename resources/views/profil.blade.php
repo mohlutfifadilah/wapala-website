@@ -61,7 +61,7 @@
         <section class="my-5">
             <div class="row">
                 <div class="col">
-                    <img src="{{ asset('arti-logo.png') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('arti-logo2.png') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </section>
