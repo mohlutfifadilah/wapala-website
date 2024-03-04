@@ -40,9 +40,10 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         //
+
         Status::create([
-            'nama_status' => $request->status,
-            'kepanjangan' => $request->kepanjangan,
+            'nama_status' => strtoupper($request->status),
+            'kepanjangan' => ucwords($request->kepanjangan),
         ]);
 
         return redirect()->route('status.index')->withSuccess('Data Status berhasil ditambahkan');
@@ -85,8 +86,8 @@ class StatusController extends Controller
         $status = Status::find($id);
 
         $status->update([
-            'nama_status' => $request->status,
-            'kepanjangan' => $request->kepanjangan,
+            'nama_status' => strtoupper($request->status),
+            'kepanjangan' => ucwords($request->kepanjangan),
         ]);
 
         return redirect()->route('status.index')->withSuccess('Data Status berhasil diedit');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class ProdiController extends Controller
@@ -14,6 +15,8 @@ class ProdiController extends Controller
     public function index()
     {
         //
+        $prodi = Prodi::all();
+        return view('admin.prodi.index',compact('prodi'));
     }
 
     /**
@@ -24,6 +27,8 @@ class ProdiController extends Controller
     public function create()
     {
         //
+        $prodi = Prodi::all();
+        return view('admin.prodi.prodi_add', compact('prodi'));
     }
 
     /**
@@ -35,6 +40,11 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
         //
+        Prodi::create([
+            'nama_prodi' => $request->prodi,
+        ]);
+
+        return redirect()->route('prodi.index')->withSuccess('Data Program Studi berhasil ditambahkan');
     }
 
     /**
@@ -57,6 +67,8 @@ class ProdiController extends Controller
     public function edit($id)
     {
         //
+        $prodi = Prodi::find($id);
+        return view('admin.prodi.prodi_edit', compact('prodi'));
     }
 
     /**
@@ -69,6 +81,13 @@ class ProdiController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $prodi = Prodi::find($id);
+
+        $prodi->update([
+            'nama_prodi' => $request->prodi,
+        ]);
+
+        return redirect()->route('prodi.index')->withSuccess('Data Prodi berhasil diedit');
     }
 
     /**
@@ -80,5 +99,9 @@ class ProdiController extends Controller
     public function destroy($id)
     {
         //
+        $prodi = Prodi::find($id);
+        $prodi->delete();
+
+        return redirect()->route('prodi.index')->withSuccess('Data Prodi berhasil dihapus');
     }
 }
