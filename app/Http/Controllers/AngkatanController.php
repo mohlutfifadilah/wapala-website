@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Angkatan;
 use Illuminate\Http\Request;
 
 class AngkatanController extends Controller
@@ -14,6 +15,8 @@ class AngkatanController extends Controller
     public function index()
     {
         //
+        $angkatan = Angkatan::all();
+        return view('admin.angkatan.index',compact('angkatan'));
     }
 
     /**
@@ -24,6 +27,7 @@ class AngkatanController extends Controller
     public function create()
     {
         //
+        return view('admin.angkatan.angkatan_add');
     }
 
     /**
@@ -35,6 +39,29 @@ class AngkatanController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->file('foto')) {
+            // Ambil ukuran file dalam bytes
+            $fileSize = $request->file('foto')->getSize();
+
+            // Periksa apakah ukuran file melebihi batas maksimum (2 MB)
+            if ($fileSize > 2 * 1024 * 1024) {
+                // File terlalu besar, kembalikan respons dengan pesan kesalahan
+                return redirect()->back()->with('error', 'Ukuran file tidak lebih dari 2 mb');
+            }
+            $file = $request->file('foto');
+            $image = $request->file('foto')->store('foto-angkatan');
+            $file->move('storage/foto-angkatan/', $image);
+            $image = str_replace('foto-angkatan/', '', $image);
+        } else {
+            $image = '';
+        }
+
+        Angkatan::create([
+            'foto' => $image,
+            'nama_angkatan' => $request->angkatan,
+        ]);
+
+        return redirect()->route('angkatan.index')->withSuccess('Data Angkatan berhasil ditambahkan');
     }
 
     /**
@@ -57,6 +84,8 @@ class AngkatanController extends Controller
     public function edit($id)
     {
         //
+        $angkatan = Angkatan::find($id);
+        return view('admin.angkatan.angkatan_edit', compact('angkatan'));
     }
 
     /**
@@ -69,6 +98,35 @@ class AngkatanController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $angkatan = Angkatan::find($id);
+
+        if ($request->file('foto')) {
+            // Ambil ukuran file dalam bytes
+            $fileSize = $request->file('foto')->getSize();
+
+            // Periksa apakah ukuran file melebihi batas maksimum (2 MB)
+            if ($fileSize > 2 * 1024 * 1024) {
+                // File terlalu besar, kembalikan respons dengan pesan kesalahan
+                return redirect()->back()->with('error', 'Ukuran file tidak lebih dari 2 mb');
+            }
+            $file = $request->file('foto');
+            $image = $request->file('foto')->store('foto-angkatan');
+            $file->move('storage/foto-angkatan/', $image);
+            $image = str_replace('foto-angkatan/', '', $image);
+            if($angkatan->foto){
+                unlink(storage_path('app/foto-angkatan/' . $angkatan->foto));
+                unlink(public_path('storage/foto-angkatan/' . $angkatan->foto));
+            }
+        } else {
+            $image = $angkatan->foto;
+        }
+
+        $angkatan->update([
+            'foto' => $image,
+            'nama_angkatan' => $request->angkatan,
+        ]);
+
+        return redirect()->route('angkatan.index')->withSuccess('Data Angkatan berhasil diedit');
     }
 
     /**
@@ -80,5 +138,13 @@ class AngkatanController extends Controller
     public function destroy($id)
     {
         //
+        $angkatan = Angkatan::find($id);
+        if($angkatan->foto){
+            unlink(storage_path('app/foto-angkatan/' . $angkatan->foto));
+            unlink(public_path('storage/foto-angkatan/' . $angkatan->foto));
+          }
+        $angkatan->delete();
+
+        return redirect()->route('angkatan.index')->withSuccess('Data Angkatan berhasil dihapus');
     }
 }

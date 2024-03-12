@@ -71,7 +71,7 @@
                     @foreach ($angkatan as $a)
                         <div class="col">
                             <div class="card" style="width: 16rem;">
-                                <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
+                                <img src="{{ asset('storage/foto-angkatan/' . $a->foto) }}" class="card-img-top" alt="...">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $a->nama_angkatan }}</h5>
                                     <p class="card-text">WAPALA {{ numberToRomanRepresentation($loop->iteration) }}</p>

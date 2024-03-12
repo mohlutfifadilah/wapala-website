@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prodi;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
-class ProdiController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProdiController extends Controller
     public function index()
     {
         //
-        $prodi = Prodi::all();
-        return view('admin.prodi.index',compact('prodi'));
+        $kategori = Kategori::all();
+        return view('admin.kategori.index',compact('kategori'));
     }
 
     /**
@@ -27,8 +27,8 @@ class ProdiController extends Controller
     public function create()
     {
         //
-        $prodi = Prodi::all();
-        return view('admin.prodi.prodi_add', compact('prodi'));
+        $kategori = Kategori::all();
+        return view('admin.kategori.kategori_add', compact('kategori'));
     }
 
     /**
@@ -40,11 +40,11 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
         //
-        Prodi::create([
-            'nama_prodi' => $request->prodi,
+        Kategori::create([
+            'nama_kategori' => $request->kategori,
         ]);
 
-        return redirect()->route('prodi.index')->withSuccess('Data Prodi berhasil ditambahkan');
+        return redirect()->route('kategori.index')->withSuccess('Data Kategori berhasil ditambahkan');
     }
 
     /**
@@ -67,8 +67,8 @@ class ProdiController extends Controller
     public function edit($id)
     {
         //
-        $prodi = Prodi::find($id);
-        return view('admin.prodi.prodi_edit', compact('prodi'));
+        $kategori = Kategori::find($id);
+        return view('admin.kategori.kategori_edit', compact('kategori'));
     }
 
     /**
@@ -81,13 +81,13 @@ class ProdiController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $prodi = Prodi::find($id);
+        $kategori = Kategori::find($id);
 
-        $prodi->update([
-            'nama_prodi' => $request->prodi,
+        $kategori->update([
+            'nama_kategori' => $request->kategori,
         ]);
 
-        return redirect()->route('prodi.index')->withSuccess('Data Prodi berhasil diedit');
+        return redirect()->route('kategori.index')->withSuccess('Data Kategori berhasil diedit');
     }
 
     /**
@@ -99,9 +99,9 @@ class ProdiController extends Controller
     public function destroy($id)
     {
         //
-        $prodi = Prodi::find($id);
-        $prodi->delete();
+        $kategori = Kategori::find($id);
+        $kategori->delete();
 
-        return redirect()->route('prodi.index')->withSuccess('Data Prodi berhasil dihapus');
+        return redirect()->route('kategori.index')->withSuccess('Data Kategori berhasil dihapus');
     }
 }

@@ -25,6 +25,12 @@
         </a>
       </li><!-- End -->
       <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) != 'angkatan' ? 'collapsed' : '' }}" href="{{ route('angkatan.index') }}">
+          <i class="bx bx-universal-access"></i>
+          <span>Angkatan</span>
+        </a>
+      </li><!-- End -->
+      <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) != 'status' ? 'collapsed' : '' }}" href="{{ route('status.index') }}">
           <i class="bi bi-info-square"></i>
           <span>Status Keanggotaan</span>
@@ -39,6 +45,12 @@
 
       <li class="nav-heading">Halaman</li>
 
+      <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) != 'kategori' ? 'collapsed' : '' }}" href="{{ route('kategori.index') }}">
+          <i class="bx bx-list-ul"></i>
+          <span>Kategori</span>
+        </a>
+      </li><!-- End -->
       <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) != 'galeri' ? 'collapsed' : '' }}" href="{{ route('galeri.index') }}">
           <i class="bi bi-card-image"></i>

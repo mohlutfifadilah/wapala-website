@@ -33,7 +33,7 @@
     </div>
 </section>
 <section class="mt-1">
-    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('Desain tanpa judul (2).png') }}">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('Desain tanpa judul.png') }}">
         <div class="container text-center py-5 my-5">
             <div class="row">
                 @foreach ($divisi as $d)

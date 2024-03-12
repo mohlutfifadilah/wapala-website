@@ -4,6 +4,7 @@ use App\Http\Controllers\AngkatanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdiController;
@@ -52,5 +53,6 @@ Route::resource('divisi', DivisiController::class);
 Route::resource('status', StatusController::class);
 Route::resource('prodi', ProdiController::class);
 Route::resource('angkatan', AngkatanController::class);
+Route::resource('kategori', KategoriController::class);
 Route::resource('galeri', GaleriController::class);
 

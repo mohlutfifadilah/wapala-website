@@ -11,17 +11,12 @@
 @include('template.header-galeri')
         <section class="my-4">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center my-2">
-                        <h4>Isotope filter magical layouts with Bootstrap 4</h4>
-                    </div>
-                </div>
                 <div class="portfolio-menu mt-2 mb-4 text-center">
                     <ul>
-                    <li class="btn btn-outline-dark active" data-filter="*">All</li>
-                    <li class="btn btn-outline-dark" data-filter=".gts">Girls T-shirt</li>
-                    <li class="btn btn-outline-dark" data-filter=".lap">Laptops</li>
-                    <li class="btn btn-outline-dark text" data-filter=".selfie">selfie</li>
+                        <li class="btn btn-outline-dark active" data-filter="*">All</li>
+                        <li class="btn btn-outline-dark" data-filter=".gts">Girls T-shirt</li>
+                        <li class="btn btn-outline-dark" data-filter=".lap">Laptops</li>
+                        <li class="btn btn-outline-dark text" data-filter=".selfie">selfie</li>
                     </ul>
                 </div>
             <div class="portfolio-item row">
