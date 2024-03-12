@@ -1,15 +1,15 @@
-<section class="mt-5">
-            <div class="bg-primary p-1">
-                <div class="container text-center">
+<section class="mt-0">
+            <div class="p-1" style="background-color: #87ceeb; color: white;">
+                <div class="container text-center px-4 py-3">
                     <div class="row">
                         <div class="col">
-                            <i class="fab fa-instagram"></i> @wapalaittelkom
+                            <i class="fab fa-instagram" style="font-size: 25px;"></i> @wapalaittelkom
                         </div>
                         <div class="col">
-                            <i class="fab fa-tiktok"></i> @wapalaittelkom
+                            <i class="fab fa-tiktok" style="font-size: 25px;"></i> @wapalaittelkom
                         </div>
                         <div class="col">
-                            <i class="fab fa-youtube"></i> Wapala IT Telkom
+                            <i class="fab fa-youtube" style="font-size: 25px;"></i> Wapala IT Telkom
                         </div>
                     </div>
                 </div>

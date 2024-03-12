@@ -45,13 +45,13 @@
                             </div>
                             <div class="col-md-8">
                                 <h5 class="mt-2 mb-0 pt-1">Total Keseluruhan Anggota</h5>
-                                <small class="mb-5">Total seluruh anggota yang di wasmallala</small>
+                                <small class="mb-5">Total seluruh anggota yang ada di WAPALA IT Telkom</small>
                                 <h5 class="mt-5 mb-0 pt-1">Anggota Kehormatan</h5>
-                                <small class="mb-5">Total seluruh anggota yang di wasmallala</small>
+                                <small class="mb-5">Total seluruh Anggota Kehormatan</small>
                                 <h5 class="mt-5 mb-0 pt-1">Anggota Luar Biasa</h5>
-                                <small class="mb-5">Total seluruh anggota yang di wasmallala</small>
+                                <small class="mb-5">Total seluruh Anggota Luar Biasa</small>
                                 <h5 class="mt-5 mb-0 pt-1">Anggota Biasa</h5>
-                                <small class="mb-5">Total seluruh anggota yang di wasmallala</small>
+                                <small class="mb-5">Total seluruh Anggota Biasa</small>
                             </div>
                         </div>
                     </div>
@@ -68,15 +68,17 @@
         <section class="my-5">
             <div class="container">
                 <div class="row row-cols-4">
-                    <div class="col">
-                        <div class="card" style="width: 16rem;">
-                            <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Nama Angkatan</h5>
-                                <p class="card-text">WAPALA I</p>
+                    @foreach ($angkatan as $a)
+                        <div class="col">
+                            <div class="card" style="width: 16rem;">
+                                <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ $a->nama_angkatan }}</h5>
+                                    <p class="card-text">WAPALA {{ numberToRomanRepresentation($loop->iteration) }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                     <div class="col">
                         <div class="card" style="width: 16rem;">
                             <img src="{{ asset('IMG_6120.JPG') }}" class="card-img-top" alt="...">
@@ -124,7 +126,7 @@
                 // Set default step function for all animate calls
                 step: function(state, circle) {
                     circle.path.setAttribute('stroke', state.color);
-                    circle.setText(10);
+                    circle.setText({{ $total }});
                     circle.text.style.color = state.color;
                 }
             });
@@ -143,7 +145,7 @@
                 // Set default step function for all animate calls
                 step: function(state, circle) {
                     circle.path.setAttribute('stroke', state.color);
-                    circle.setText(10);
+                    circle.setText({{ $ak }});
                     circle.text.style.color = state.color;
                 }
             });
@@ -161,7 +163,7 @@
                 // Set default step function for all animate calls
                 step: function(state, circle) {
                     circle.path.setAttribute('stroke', state.color);
-                    circle.setText(10);
+                    circle.setText({{ $alb }});
                     circle.text.style.color = state.color;
                 }
             });
@@ -179,11 +181,27 @@
                 // Set default step function for all animate calls
                 step: function(state, circle) {
                     circle.path.setAttribute('stroke', state.color);
-                    circle.setText(10);
+                    circle.setText({{ $ab }});
                     circle.text.style.color = state.color;
                 }
             });
 
             bar.animate(1.0);  // Number from 0.0 to 1.0
         </script>
+        <?php
+            function numberToRomanRepresentation($number) {
+                $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
+                $returnValue = '';
+                while ($number > 0) {
+                    foreach ($map as $roman => $int) {
+                        if($number >= $int) {
+                            $number -= $int;
+                            $returnValue .= $roman;
+                            break;
+                        }
+                    }
+                }
+                return $returnValue;
+            }
+        ?>
 @include('template.footer')

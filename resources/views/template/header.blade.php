@@ -8,16 +8,24 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="icon" href="{{ asset('Logo WAPALA.png') }}">
     <style>
+        .btn-primary {
+           background-color: #87ceeb;
+           border: none;
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:after, .btn-primary:active:after{
+            background-color: #87ceeb;
+            border: none;
+        }
         body {
             font-family: 'Poppins';
         }
 
         .nav-item .nav-link.active{
             font-weight: bold;
-            color: blue;
+            color: #87ceeb;
         }
         .wrap{
-  background-image:url('{{ asset('IMG_6120 (1).JPG') }}');
+  background-image:url('{{ asset('jumbotron.jpg') }}');
   width:100%;
   height:100vh;
   background-size:cover;
@@ -79,8 +87,8 @@
 }
 
 .divisi{
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
 }
     </style>
   </head>
@@ -109,8 +117,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ $segment === 'kontak' ? 'active router-link-active' : '' }}" href="/kontak">Kontak</a>
                                 </li>
-                                <li class="nav-item mr-2">
-                                    <a class="nav-link btn btn-primary" href="/login">Login</a>
+                                <li class="nav-item mr-2 ms-3">
+                                    <a class="btn btn-primary btn-small" href="/login">Login</a>
                                 </li>
                             </ul>
                         </div>

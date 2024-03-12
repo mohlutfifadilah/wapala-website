@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Angkatan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -18,7 +20,21 @@ class ProfilController extends Controller
         if ($segment===null){
             $segment = '/beranda';
         }
-        return view('profil', [ 'segment' => $segment ] );
+
+        $total = User::whereNotNull('id_status')->count();
+        $ak = User::where('id_status', 1)->count();
+        $alb = User::where('id_status', 2)->count();
+        $ab = User::where('id_status', 3)->count();
+
+        $angkatan = Angkatan::all();
+
+        return view('profil', [ 'segment' => $segment,
+                                'total' => $total,
+                                'ak' => $ak,
+                                'alb' => $alb,
+                                'ab' => $ab,
+                                'angkatan' => $angkatan,
+                                 ] );
     }
 
     /**

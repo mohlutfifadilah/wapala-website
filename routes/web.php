@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\ProfilController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
+use App\Models\Divisi;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,11 @@ Route::get('/', function () {
     if ($segment===null){
         $segment = 'beranda';
     }
-    return view('main', [ 'segment' => $segment ] );
+
+    $divisi = Divisi::all();
+    return view('main', [ 'segment' => $segment,
+                          'divisi' => $divisi
+                          ] );
 });
 
 Route::get('/login', [LoginController::class, 'index']);

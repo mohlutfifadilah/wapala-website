@@ -9,45 +9,39 @@
             <div class="banner"></div>
 @endsection
 @include('template.header')
-<section class="my-5">
+<section class="mt-3 mb-1">
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="{{ asset('IMG_6120.JPG') }}" class="img-fluid" alt="...">
+                <img src="{{ asset('siapakami.png') }}" class="img-fluid mx-auto" alt="" style="width: 480px; height: 480px;">
             </div>
-            <div class="col">
-                <h3>Siapa Kami?</h3>
+            <div class="col mt-5 pt-3">
+                <h2 class="mb-4">Siapa Kami ?</h2>
                 <p>
-                    Kami adalah Wapala IT Telkom, WAPALA (Wahana Pencinta Alam) dibentuk pada tanggal 28 September 2004
-                    dengan nama WAPALA AKATEL, pada tanggal 28 September 2013 WAPALA AKATEL berganti nama menjadi WAPALA
-                    STT TELEMATIKA TELKOM, lalu pada tanggal 28 September 2017 berganti nama menjadi WAPALA IT Telkom.
+                    Kami adalah Wapala IT Telkom, WAPALA (Wahana Pencinta Alam) dibentuk pada tanggal 28 September 2004 <br> <br>
+                    28 September 2004 : WAPALA AKATEL <br> 28 September 2013 : WAPALA STT TELEMATIKA TELKOM <br> 28 September 2017 : WAPALA IT Telkom.
                 </p>
-                <p class="mt-3 fw-italic">
+                <small class="mt-5 text-italic text-danger">
                     Ragu-ragu harap kembali!
-                </p>
-                <a href="" class="btn btn-primary">
+                </small>
+                <br>
+                <a href="/profil" class="btn btn-primary btn-small mt-3">
                     Selengkapnya
                 </a>
             </div>
         </div>
     </div>
 </section>
-<section class="my-5">
-    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('20240223_141045_0000.png') }}">
+<section class="mt-1">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('Desain tanpa judul (2).png') }}">
         <div class="container text-center py-5 my-5">
             <div class="row">
-                <div class="col mt-5 pt-2">
-                    <img src="{{ asset('15.jpg') }}" alt="" class="img-fluid divisi">
-                    <h3 class="mt-4 text-white">Rock Climbing</h3>
-                </div>
-                <div class="col mt-5 pt-2">
-                    <img src="{{ asset('17.jpg') }}" alt="" class="img-fluid divisi">
-                    <h3 class="mt-4 text-white">Gunung Hutan</h3>
-                </div>
-                <div class="col mt-5 pt-2">
-                    <img src="{{ asset('13.jpg') }}" alt="" class="img-fluid divisi">
-                    <h3 class="mt-4 text-white">Caving</h3>
-                </div>
+                @foreach ($divisi as $d)
+                    <div class="col mt-5 pt-2">
+                        <img src="{{ asset('storage/logo-divisi/' . $d->logo) }}" alt="" class="img-fluid divisi">
+                        <h3 class="mt-4 text-white">{{ $d->nama_divisi }}</h3>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
