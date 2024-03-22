@@ -23,7 +23,8 @@ class GaleriController extends Controller
             $segment = '/galeri';
         }
         if(!Auth::check()){
-            return view('galeri',compact('galeri', 'segment'));
+            $kategori = Kategori::all();
+            return view('galeri',compact('galeri', 'segment', 'kategori'));
         }
         $kategori = Kategori::all()->count();
         if($kategori === 0){

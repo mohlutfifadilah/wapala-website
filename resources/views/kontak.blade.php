@@ -11,30 +11,15 @@
 @include('template.header-kontak')
         <section class="my-4">
             <div class="container">
-<div class="row">
-    
-</div>
+                <div class="row">
+                    <div class="col">
+                        <img src="{{ asset('ketum.png') }}" alt="">
+                    </div>
+                    <div class="col">
+                        <h3>Kontak Kami :</h3>
+                        <i class="fab fa-instagram" style="font-size: 25px;"></i> @wapalaittelkom
+                    </div>
+                </div>
             </div>
         </section>
-        <script>
-            $('.portfolio-menu ul li').click(function(){
-         	$('.portfolio-menu ul li').removeClass('active');
-         	$(this).addClass('active');
-
-         	var selector = $(this).attr('data-filter');
-         	$('.portfolio-item').isotope({
-         		filter:selector
-         	});
-         	return  false;
-         });
-         $(document).ready(function() {
-         var popup_btn = $('.popup-btn');
-         popup_btn.magnificPopup({
-         type : 'image',
-         gallery : {
-         	enabled : true
-         }
-         });
-         });
-        </script>
         @include('template.footer')
