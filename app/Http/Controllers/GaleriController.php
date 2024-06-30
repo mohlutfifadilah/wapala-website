@@ -30,7 +30,7 @@ class GaleriController extends Controller
         if($kategori === 0){
             return redirect()->back()->with('error', 'Tambahkan kategori terlebih dahulu');
         }
-        return view('admin.galeri.index',compact('galeri'));
+        return view('admin.galeri.index',compact('galeri', 'segment'));
     }
 
     /**

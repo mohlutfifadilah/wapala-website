@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'nim' => null,
             'nia' => null,
             'email' => 'admin@wapala.com',
+            'oprec' => 0,
             'password' => Hash::make('Wapa!a2004')
         ]);
 

@@ -104,14 +104,20 @@
                                     <a class="nav-link {{ $segment === 'profil' ? 'active' : '' }}" href="/profil">Profil</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ $segment === 'galeri' ? 'active router-link-active' : '' }}" href="/galeri">Galeri</a>
+                                    <a class="nav-link {{ $segment === 'album' ? 'active router-link-active' : '' }}" href="/album">Album</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link {{ $segment === 'kontak' ? 'active router-link-active' : '' }}" href="/kontak">Kontak</a>
                                 </li>
-                                <li class="nav-item mr-2 ms-3">
-                                    <a class="btn btn-primary btn-small" href="/login">Login</a>
-                                </li>
+                                @if (!Auth::check())
+                                    {{-- <li class="nav-item mr-2 ms-3">
+                                        <a class="btn btn-primary btn-small" href="/login">Login</a>
+                                    </li> --}}
+                                @else
+                                    <li class="nav-item mr-2 ms-3">
+                                        <a class="btn btn-primary btn-small" href="/dashboard">Dashboard</a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

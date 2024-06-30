@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AngkatanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisiController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OprecController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +17,7 @@ use  App\Http\Controllers\ProfilController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
 use App\Models\Divisi;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +37,10 @@ Route::get('/', function () {
     }
 
     $divisi = Divisi::all();
+    $oprec = User::whereNull('nia')->first();
     return view('main', [ 'segment' => $segment,
-                          'divisi' => $divisi
+                          'divisi' => $divisi,
+                          'oprec' => $oprec
                           ] );
 });
 
@@ -43,8 +49,36 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/album', [AlbumController::class, 'index']);
 Route::resource('profil', ProfilController::class);
 Route::resource('kontak', KontakController::class);
+Route::get('/pendaftaran', function() {
+    $segment = request()->segment(1);
+        if ($segment===null){
+            $segment = '/pendaftaran';
+        }
+
+    $admin = User::where('id', '=', 1)->first();
+    if ($admin->oprec != 1){
+        return redirect()->back();
+    }
+    return view('oprec', [ 'segment' => $segment ] );
+});
+
+Route::get('/formpendaftaran', function() {
+    $segment = request()->segment(1);
+        if ($segment===null){
+            $segment = '/formpendaftaran';
+        }
+
+    $admin = User::where('id', '=', 1)->first();
+    if ($admin->oprec != 1){
+        return redirect()->back();
+    }
+    return view('formoprec', [ 'segment' => $segment ] );
+});
+
+Route::resource('/pendaftaran', PendaftaranController::class);
 
 # Admin
 Route::get('/dashboard',  [DashboardController::class, 'index']);
@@ -55,4 +89,6 @@ Route::resource('prodi', ProdiController::class);
 Route::resource('angkatan', AngkatanController::class);
 Route::resource('kategori', KategoriController::class);
 Route::resource('galeri', GaleriController::class);
+Route::resource('oprec', OprecController::class);
+Route::post('/open-oprec/{oprec}', [OprecController::class, 'open'])->name('open-oprec');
 

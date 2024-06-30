@@ -57,6 +57,12 @@
           <span>Galeri</span>
         </a>
       </li><!-- End -->
+      <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) != 'oprec' ? 'collapsed' : '' }}" href="{{ route('oprec.index') }}">
+          <i class="bi bi-person-fill-add"></i>
+          <span>Open Recruitment</span>
+        </a>
+      </li><!-- End -->
 
     </ul>
 

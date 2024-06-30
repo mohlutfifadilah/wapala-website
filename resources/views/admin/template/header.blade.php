@@ -9,6 +9,9 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Favicons -->
   <link href="{{ asset('Logo WAPALA.png') }}" rel="icon">
   <link href="{{ asset('Logo WAPALA.png') }}" rel="apple-touch-icon">
@@ -29,6 +32,7 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -37,7 +41,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/admin" class="logo d-flex align-items-center">
+      <a href="/dashboard" class="logo d-flex align-items-center">
         <img src="{{ asset('Logo WAPALA.png') }}" alt="">
         <span class="d-none d-lg-block ms-3">WAPALA</span>
       </a>
