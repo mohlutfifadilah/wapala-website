@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             DivisiSeeder::class,
             ProdiSeeder::class,
             StatusSeeder::class,
+            AgamaSeeder::class,
+            FakultasSeeder::class,
         ]);
     }
 }

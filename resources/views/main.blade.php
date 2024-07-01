@@ -5,7 +5,7 @@
                 <p><em>~ Memayu Hayuning Bawana ~</em></p>
                 @if ($oprec->oprec === 1)
                     <small class="text-muted">Tertarik ? Daftar Sekarang Juga! </small><br>
-                    <a href="/pendaftaran" class="btn btn-primary mt-1">Open Recruitment {{ now()->year }}</a>
+                    <a href="{{ route('pendaftaran.index') }}" class="btn btn-primary mt-1">Open Recruitment {{ now()->year }}</a>
                 @endif
             </div>
             <div class="banner"></div>

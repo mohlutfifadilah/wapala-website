@@ -52,31 +52,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/album', [AlbumController::class, 'index']);
 Route::resource('profil', ProfilController::class);
 Route::resource('kontak', KontakController::class);
-Route::get('/pendaftaran', function() {
-    $segment = request()->segment(1);
-        if ($segment===null){
-            $segment = '/pendaftaran';
-        }
-
-    $admin = User::where('id', '=', 1)->first();
-    if ($admin->oprec != 1){
-        return redirect()->back();
-    }
-    return view('oprec', [ 'segment' => $segment ] );
-});
-
-Route::get('/formpendaftaran', function() {
-    $segment = request()->segment(1);
-        if ($segment===null){
-            $segment = '/formpendaftaran';
-        }
-
-    $admin = User::where('id', '=', 1)->first();
-    if ($admin->oprec != 1){
-        return redirect()->back();
-    }
-    return view('formoprec', [ 'segment' => $segment ] );
-});
 
 Route::resource('/pendaftaran', PendaftaranController::class);
 

@@ -23,7 +23,7 @@
                                     <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -48,11 +48,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="l" id="l" value="l">
+                                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="l" value="l">
                                         <label class="form-check-label" for="l">Laki-Laki</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="p" id="p" value="p">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="p" value="p">
                                         <label class="form-check-label" for="p">Perempuan</label>
                                     </div>
                                 </div>
@@ -63,12 +63,20 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="" id="" value="">
-                                        <label class="form-check-label" for="l">Laki-Laki</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="p" id="p" value="p">
-                                        <label class="form-check-label" for="p">Perempuan</label>
+                                        <input class="form-check-input" type="radio" name="golongan_darah" id="a" value="a">
+                                        <label class="form-check-label" for="a">A</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="golongan_darah" id="b" value="b">
+                                        <label class="form-check-label" for="b">B</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="golongan_darah" id="ab" value="ab">
+                                        <label class="form-check-label" for="ab">AB</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="golongan_darah" id="o" value="o">
+                                        <label class="form-check-label" for="o">O</label>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +85,7 @@
                                     <label for="nim" class="form-label">NIM</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="nim" name="nim">
+                                    <input type="text" class="form-control justNumber" id="nim" name="nim">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -87,9 +95,9 @@
                                 <div class="col-md-9">
                                     <select class="form-select" aria-label="prodi">
                                         <option selected disabled>Pilih Program Studi</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @foreach ($prodi as $p)
+                                            <option value="{{ $p->nama_prodi }}">{{ $p->nama_prodi }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -100,9 +108,9 @@
                                 <div class="col-md-9">
                                     <select class="form-select" aria-label="agama">
                                         <option selected disabled>Pilih Agama</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        @foreach ($agama as $a)
+                                            <option value="{{ $a->nama_agama }}">{{ $a->nama_agama }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -111,7 +119,7 @@
                                     <label for="nohp" class="form-label">No Handphone</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="nohp" name="nohp">
+                                    <input type="text" class="form-control justNumber" id="nohp" name="nohp">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -119,7 +127,7 @@
                                     <label for="alamat_rumah" class="form-label">Alamat Rumah</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="alamat_rumah" rows="3"></textarea>
+                                    <textarea class="form-control" id="alamat_rumah" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -127,7 +135,7 @@
                                     <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="alamat_domisili" rows="3"></textarea>
+                                    <textarea class="form-control" id="alamat_domisili" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -135,7 +143,7 @@
                                     <label for="motivasi" class="form-label">Motivasi</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="motivasi" rows="3"></textarea>
+                                    <textarea class="form-control" id="motivasi" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -143,7 +151,7 @@
                                     <label for="pengalaman_organisasi" class="form-label">Pengalaman Organisasi</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="pengalaman_organisasi" rows="3"></textarea>
+                                    <textarea class="form-control" id="pengalaman_organisasi" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -151,7 +159,7 @@
                                     <label for="riwayat_penyakit" class="form-label">Riwayat Penyakit</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="riwayat_penyakit" rows="3"></textarea>
+                                    <textarea class="form-control" id="riwayat_penyakit" rows="4"></textarea>
                                 </div>
                             </div>
                             <h4>Data Orang Tua :</h4>
@@ -169,7 +177,7 @@
                                     <label for="nohp_orangtua" class="form-label">No Handphone</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="nohp_orangtua" name="nohp_orangtua">
+                                    <input type="text" class="form-control justNumber" id="nohp_orangtua" name="nohp_orangtua">
                                 </div>
                             </div>
                             <div class="row">
@@ -184,12 +192,17 @@
         </section>
         <script>
             $(document).ready(function() {
+
                 var currentDate = new Date();
                 // Format the current date as YYYY-MM-DD for the input field
                 var formattedCurrentDate = currentDate.toISOString().split('T')[0];
                 // Set the max attribute of the input field to the current date
                 let selectElement = document.getElementById('tanggal_lahir');
                 selectElement.setAttribute('max', formattedCurrentDate);
+
+                $('.justNumber').on('input', function() {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
             });
         </script>
         @include('template.footer')

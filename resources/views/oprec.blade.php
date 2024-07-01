@@ -31,7 +31,7 @@
                             </label>
                         </div>
                         <div class="d-grid gap-2">
-                            <a href="/formpendaftaran" class="btn btn-success mt-1 disabled" id="nextButton">Selanjutnya</a>
+                            <a href="{{ route('pendaftaran.create') }}" class="btn btn-success mt-1 disabled" id="nextButton">Selanjutnya</a>
                         </div>
                     </div>
                 </div>

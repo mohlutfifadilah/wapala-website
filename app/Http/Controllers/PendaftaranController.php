@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agama;
+use App\Models\Fakultas;
+use App\Models\Prodi;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
@@ -14,6 +18,16 @@ class PendaftaranController extends Controller
     public function index()
     {
         //
+        $segment = request()->segment(1);
+        if ($segment===null){
+            $segment = '/pendaftaran';
+        }
+
+        $admin = User::where('id', '=', 1)->first();
+        if ($admin->oprec != 1){
+            return redirect()->back();
+        }
+        return view('oprec', [ 'segment' => $segment ] );
     }
 
     /**
@@ -24,6 +38,25 @@ class PendaftaranController extends Controller
     public function create()
     {
         //
+
+        $agama = Agama::all();
+        $fakultas = Fakultas::all();
+        $prodi = Prodi::all();
+        $segment = request()->segment(1);
+        if ($segment===null){
+            $segment = '/formpendaftaran';
+        }
+
+        $admin = User::where('id', '=', 1)->first();
+        if ($admin->oprec != 1){
+            return redirect()->back();
+        }
+        return view('formoprec', [
+            'segment' => $segment,
+            'agama' => $agama,
+            'fakultas' => $fakultas,
+            'prodi' => $prodi
+        ]);
     }
 
     /**
@@ -35,7 +68,44 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        // Cek apakah embed HTML sudah ada di tabel desa
+        if (User::where('nia', $request->nia)->exists()) {
+            return redirect()->back()->withInput()->with('error', 'NIA sudah digunakan!');
+        }
+
+        // Validasi apakah input email valid
+        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            return redirect()->route('user.create')->with('error', 'Format Email tidak valid');
+        }
+
+        if (is_null($request->prodi)) {
+            return redirect()->route('user.create')->with('error', 'Prodi harus diisi');
+        }
+
+        if (is_null($request->tahun)) {
+            return redirect()->route('user.create')->with('error', 'Tahun harus diisi');
+        }
+
+        if (is_null($request->status)) {
+            return redirect()->route('user.create')->with('error', 'Status harus diisi');
+        }
+
+        if (strlen($request->nia) !== 19) {
+            return redirect()->route('user.create')->with('error', 'Format NIA tidak sesuai');
+        }
+
+        User::create([
+            'nama' => $request->nama,
+            'id_prodi' => $request->prodi,
+            'tahun' => $request->tahun,
+            'jenis_kelamin' => $request->jk,
+            'nia' => $request->nia,
+            'id_status' => $request->status,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('user.index')->withSuccess('Data Anggota berhasil ditambahkan');
     }
 
     /**
