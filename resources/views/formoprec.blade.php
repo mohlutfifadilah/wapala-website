@@ -23,15 +23,18 @@
                                     <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
+                                    <input type="text" class="form-control @if (session('status')) is-invalid @endif" id="nama_lengkap" name="nama_lengkap" value="{{ old('nama_lengkap') }}">
+                                    @if (session('nama_lengkap'))
+                                        <div id="nama_lengkap" class="form-text text-danger">{{ session('nama_lengkap') }}</div>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="row mb-4">
+                            {{-- <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir">
+                                    <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ old('tempat_lahir') }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -39,25 +42,29 @@
                                     <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                                    <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="l" value="l">
+                                        <input class="form-check-input @if (session('status')) is-invalid @endif" type="radio" name="jenis_kelamin" id="l" value="l" {{ old('jenis_kelamin') == 'l' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="l">Laki-Laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="p" value="p">
+                                        <input class="form-check-input @if (session('status')) is-invalid @endif" type="radio" name="jenis_kelamin" id="p" value="p" {{ old('jenis_kelamin') == 'p' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="p">Perempuan</label>
                                     </div>
+                                    {{ session('jenis_kelamin') }}
+                                    @if (session('jenis_kelamin'))
+                                        <div id="jenis_kelamin" class="form-text text-danger">{{ session('jenis_kelamin') }}</div>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="row mb-4 mb-4">
+                            {{-- <div class="row mb-4 mb-4">
                                 <div class="col-md-3">
                                     <label for="golongan_darah" class="form-label">Golongan Darah</label>
                                 </div>
@@ -85,7 +92,7 @@
                                     <label for="nim" class="form-label">NIM</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control justNumber" id="nim" name="nim">
+                                    <input type="text" class="form-control justNumber" id="nim" name="nim" value="{{ old('nim') }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -93,7 +100,7 @@
                                     <label for="prodi" class="form-label">Program Studi</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select class="form-select" aria-label="prodi">
+                                    <select class="form-select" aria-label="prodi" name="prodi">
                                         <option selected disabled>Pilih Program Studi</option>
                                         @foreach ($prodi as $p)
                                             <option value="{{ $p->nama_prodi }}">{{ $p->nama_prodi }}</option>
@@ -106,7 +113,7 @@
                                     <label for="agama" class="form-label">Agama</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <select class="form-select" aria-label="agama">
+                                    <select class="form-select" aria-label="agama" name="agama">
                                         <option selected disabled>Pilih Agama</option>
                                         @foreach ($agama as $a)
                                             <option value="{{ $a->nama_agama }}">{{ $a->nama_agama }}</option>
@@ -119,7 +126,7 @@
                                     <label for="nohp" class="form-label">No Handphone</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control justNumber" id="nohp" name="nohp">
+                                    <input type="text" class="form-control justNumber" id="nohp" name="nohp" value="{{ old('nohp') }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -127,7 +134,7 @@
                                     <label for="alamat_rumah" class="form-label">Alamat Rumah</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="alamat_rumah" rows="4"></textarea>
+                                    <textarea class="form-control" id="alamat_rumah" rows="4" name="alamat_rumah">{{ old('alamat_rumah') }}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -135,7 +142,7 @@
                                     <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="alamat_domisili" rows="4"></textarea>
+                                    <textarea class="form-control" id="alamat_domisili" rows="4" name="alamat_domisili">{{ old('alamat_domisili') }}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -143,7 +150,7 @@
                                     <label for="motivasi" class="form-label">Motivasi</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="motivasi" rows="4"></textarea>
+                                    <textarea class="form-control" id="motivasi" rows="4" name="motivasi">{{ old('motivasi') }}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -151,7 +158,7 @@
                                     <label for="pengalaman_organisasi" class="form-label">Pengalaman Organisasi</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="pengalaman_organisasi" rows="4"></textarea>
+                                    <textarea class="form-control" id="pengalaman_organisasi" rows="4" name="pengalaman_organisasi">{{ old('pengalaman_organisasi') }}</textarea>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -159,7 +166,7 @@
                                     <label for="riwayat_penyakit" class="form-label">Riwayat Penyakit</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="riwayat_penyakit" rows="4"></textarea>
+                                    <textarea class="form-control" id="riwayat_penyakit" rows="4" name="riwayat_penyakit">{{ old('riwayat_penyakit') }}</textarea>
                                 </div>
                             </div>
                             <h4>Data Orang Tua :</h4>
@@ -169,7 +176,7 @@
                                     <label for="nama_orangtua" class="form-label">Nama Orang Tua</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="nama_orangtua" name="nama_orangtua">
+                                    <input type="text" class="form-control" id="nama_orangtua" name="nama_orangtua" value="{{ old('nama_orangtua') }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -177,9 +184,9 @@
                                     <label for="nohp_orangtua" class="form-label">No Handphone</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control justNumber" id="nohp_orangtua" name="nohp_orangtua">
+                                    <input type="text" class="form-control justNumber" id="nohp_orangtua" name="nohp_orangtua" value="{{ old('nohp_orangtua') }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-success" type="submit">Submit</button>
