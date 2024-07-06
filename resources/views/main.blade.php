@@ -11,6 +11,14 @@
             <div class="banner"></div>
 @endsection
 @include('template.header')
+@if (session('success'))
+    <script>
+        alertify
+        .alert("{!! session('message') !!}", function(){
+            alertify.success("{!! session('success') !!}");
+        }).setHeader("{!! session('title') !!}");
+    </script>
+@endif
 <section class="mt-3 mb-1">
     <div class="container">
         <div class="row">

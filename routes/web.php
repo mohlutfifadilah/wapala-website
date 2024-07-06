@@ -42,7 +42,7 @@ Route::get('/', function () {
                           'divisi' => $divisi,
                           'oprec' => $oprec
                           ] );
-});
+})->name('main');
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
