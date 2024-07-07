@@ -70,7 +70,7 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $validator = Validator::make($request->all(), [
             'foto' => 'required|mimes:jpeg,png,jpg|max:2048',
             'nama_lengkap' => 'required',
@@ -182,7 +182,7 @@ class PendaftaranController extends Controller
             ]);
         }
 
-        return redirect('/')->with(['title' => 'Open Recruitment 2024 Wapala IT Telkom', 'success' => 'Pendaftaran Berhasil !','message' => '"Pendaftaran Berhasil!, <br> Informasi selanjutnya akan dikirim melalui email kampus, harap cek email kampus secara berkala <br><br> Salam Lestari!"']);
+        return redirect('/')->with(['title' => 'Open Recruitment 2024 Wapala IT Telkom', 'success' => 'Pendaftaran Berhasil !','message' => 'Pendaftaran Berhasil!, <br> Informasi selanjutnya akan dikirim melalui email kampus, harap cek email kampus secara berkala <br><br> Salam Lestari!']);
     }
 
     /**

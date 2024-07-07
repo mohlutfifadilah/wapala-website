@@ -41,7 +41,7 @@ Route::get('/', function () {
     return view('main', [ 'segment' => $segment,
                           'divisi' => $divisi,
                           'oprec' => $oprec
-                          ] );
+                          ]);
 })->name('main');
 
 Route::get('/login', [LoginController::class, 'index']);
