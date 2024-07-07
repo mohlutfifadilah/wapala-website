@@ -24,7 +24,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/dashboard">Beranda</a></li>
-          <li class="breadcrumb-item">Data</li>
+          <li class="breadcrumb-item">Halaman</li>
           <li class="breadcrumb-item active">Open Recruitment</li>
         </ol>
       </nav>
@@ -50,23 +50,32 @@
               <table class="table datatable">
                 <thead>
                   <tr>
+                    <th>Foto</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
-                    <th>Prodi</th>
+                    <th>NIM</th>
+                    <th>Program Studi</th>
+                    <th>No Handphone</th>
+                    <th>No Handphone<br>Orang Tua</th>
                     <th>Pilihan</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($oprec as $u)
                     <tr>
+                        <td><img src="{{ asset('/storage/oprec/' . $u->foto) }}" class="img-fluid" alt="" style="width: 60px; height: 60px; border-radius: 50%;"></td>
                         <td>{{ $u->nama }}</td>
                         @if ($u->jenis_kelamin === 'L')
-                        <td><i class="bx bx-male-sign"></i> ( {{ $u->jenis_kelamin }} )</td>
+                            <td><i class="ri-men-line text-primary"></i> ( {{ $u->jenis_kelamin }} )</td>
                         @else
-                        <td><i class="bx bx-female-sign"></i> ( {{ $u->jenis_kelamin }} )</td>
+                            <td><i class="ri-women-line" style="color: rgb(231, 79, 191);"></i> ( {{ $u->jenis_kelamin }} )</td>
                         @endif
-                        <td>{{ $u->prodi }} - {{ $u->tahun }}</td>
+                        <td>{{ $u->nim }}</td>
+                        <td>{{ $u->prodi }}</td>
+                        <td>{{ $u->nohp }}</td>
+                        <td>{{ $u->nohp_orangtua }}</td>
                         <td>
+                            <a href="{{ route('oprec.show', $u->id) }}" class="btn btn-sm btn-info text-white me-2 mb-2 mt-2"><i class="ri-information-2-line"></i></a>
                             <a href="{{ route('oprec.edit', $u->id) }}" class="btn btn-sm btn-warning text-white me-2 mb-2 mt-2"><i class="ri-edit-box-line"></i></a>
                             <form action="{{ route('oprec.destroy', $u->id) }}" method="post">
                             @csrf

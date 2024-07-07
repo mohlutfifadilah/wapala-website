@@ -51,6 +51,8 @@ class OprecController extends Controller
     public function show($id)
     {
         //
+        $oprec = Oprec::find($id);
+        return view('admin.oprec.oprec_info', compact('oprec'));
     }
 
     /**
