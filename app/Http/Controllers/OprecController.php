@@ -6,6 +6,7 @@ use App\Models\Oprec;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OprecController extends Controller
 {
@@ -103,5 +104,20 @@ class OprecController extends Controller
         }
 
         return redirect()->route('oprec.index')->withSuccess('Status berhasil diubah');
+    }
+
+    public function sendEmail($id){
+
+        $passingDataToView = 'Simple Mail Send In Laravel!';
+        $data["email"] = 'test@mail.com';
+        $data["title"] = "Mail Testing";
+
+        Mail::send('mail.sendgroup', ['passingDataToView'=> $passingDataToView], function ($message) use ($data){
+            $message->to($data["email"],'John Doe');
+            $message->subject($data["title"]);
+        });;
+
+
+        return redirect()->route('oprec.index')->withSuccess('Terkirim');
     }
 }

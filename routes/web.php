@@ -66,4 +66,5 @@ Route::resource('kategori', KategoriController::class);
 Route::resource('galeri', GaleriController::class);
 Route::resource('oprec', OprecController::class);
 Route::post('/open-oprec/{oprec}', [OprecController::class, 'open'])->name('open-oprec');
+Route::get('/send-email/{id}', [OprecController::class, 'sendEmail'])->name('send-email');
 
