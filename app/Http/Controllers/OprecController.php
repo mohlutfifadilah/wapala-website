@@ -106,14 +106,33 @@ class OprecController extends Controller
         return redirect()->route('oprec.index')->withSuccess('Status berhasil diubah');
     }
 
+    public function reset(){
+
+        $oprec = User::all();
+        $oprec->delete();
+
+        return redirect()->route('oprec.index')->withSuccess('Data berhasil direset');
+    }
+
     public function sendEmail($id){
 
-        $passingDataToView = 'Simple Mail Send In Laravel!';
-        $data["email"] = 'test@mail.com';
-        $data["title"] = "Mail Testing";
+        $oprec = Oprec::find($id);
 
-        Mail::send('mail.sendgroup', ['passingDataToView'=> $passingDataToView], function ($message) use ($data){
-            $message->to($data["email"],'John Doe');
+        $nama = $oprec->nama;
+        $nim = $oprec->nim;
+        $prodi = $oprec->prodi;
+        $link = "https://www.freecodecamp.org/news/how-to-create-a-responsive-html-email-template/";
+
+        $data["email"] = $oprec->nim . '@ittelkom-pwt.ac.id';
+        $data["title"] = "Open Recruitment Wapala " . now()->year;
+
+        Mail::send('mail.invite-group', [
+            'nama'=> $nama,
+            'nim'=> $nim,
+            'prodi'=> $prodi,
+            'link'=> $link
+        ], function ($message) use ($data){
+            $message->to($data["email"]);
             $message->subject($data["title"]);
         });;
 

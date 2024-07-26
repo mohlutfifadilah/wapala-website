@@ -45,6 +45,7 @@
                         <label class="form-check-label" for="flexSwitchCheckDefault">Open Recruitment</label>
                     </div>
                 </form>
+                <a href="{{ route('reset-oprec') }}" class="btn btn-danger text-white me-2 mb-2 mt-2" onclick="return confirm('Yakin akan mereset data ? Data Oprec akan terhapus seluruhnya');">Reset Data</i></a>
               <div id="oprecTable">
                 <!-- Table with stripped rows -->
               <table class="table datatable">
