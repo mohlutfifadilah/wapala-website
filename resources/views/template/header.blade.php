@@ -17,6 +17,10 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
 
+    <!-- Tambahkan jQuery di bagian <head> atau sebelum kode yang menggunakan $ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
     <link rel="icon" href="{{ asset('Logo WAPALA.png') }}">
     <style>
         .btn-primary {
@@ -35,73 +39,35 @@
             font-weight: bold;
             color: #87ceeb;
         }
-        .wrap{
-  background-image:url('{{ asset('jumbotron.jpg') }}');
-  width:100%;
-  height:100vh;
-  background-size:cover;
-  position: relative;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Ubah nilai alpha (0.5) sesuai dengan kebutuhan Anda */
-}
 
-/* Navbar transparan */
-    .navbar {
-        background-color: transparent !important;
-        position: absolute;
-    }
-    .nav-link {
-        color: #fff; /* Warna teks */
-        margin:  0 20px; /* Jarak antar item navbar */
-    }
-    .wrap .jumbotron {
-      position: absolute; /* Absolute positioning for text */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white; /* Adjust color for visibility */
-      text-align: center; /* Center align text */
-    }
-    .parallax-window {
-    min-height: 400px;
-    background: transparent;
-}
-#total{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#ak{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#alb{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#ab{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
+        /* Navbar transparan */
+        .navbar {
+            background-color: transparent !important;
+            position: absolute;
+        }
+        .nav-link {
+            color: #fff; /* Warna teks */
+            margin:  0 20px; /* Jarak antar item navbar */
+        }
 
-.divisi{
-    width: 125px;
-    height: 125px;
-}
+        @media (max-width: 768px) {
+            .wrap .jumbotron {
+                top: 60%; /* Adjust position on smaller screens */
+                transform: translate(-50%, -60%);
+                font-size: 1.2rem; /* Adjust font size for mobile */
+            }
+            .navbar .nav-link {
+                margin: 0 10px; /* Reduce spacing on smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                background-color: rgba(0, 0, 0, 0.7) !important; /* Add slight background for better visibility */
+            }
+        }
     </style>
+    @yield('css')
   </head>
   <body>
         <div class="wrap">
@@ -109,7 +75,7 @@
                 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent w-100 position-absolute py-0 mt-0 px-5">
                     <div class="container-fluid">
                         <a class="navbar-brand fw-bold" href="#">
-                            <img src="Logo WAPALA.png" class="mx-2 mt-3" alt="wapala" width="40" height="70">
+                            <img src="{{ asset('Logo WAPALA.png') }}" class="mx-2 mt-3" alt="wapala" width="40" height="70">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

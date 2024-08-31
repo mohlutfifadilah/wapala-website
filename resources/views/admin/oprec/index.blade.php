@@ -53,11 +53,11 @@
                   <tr>
                     <th>Foto</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
                     <th>NIM</th>
                     <th>Program Studi</th>
                     <th>No Handphone</th>
                     <th>No Handphone<br>Orang Tua</th>
+                    <th>Status</th>
                     <th>Pilihan</th>
                   </tr>
                 </thead>
@@ -65,16 +65,20 @@
                   @foreach ($oprec as $u)
                     <tr>
                         <td><img src="{{ asset('/storage/oprec/' . $u->foto) }}" class="img-fluid" alt="" style="width: 60px; height: 60px; border-radius: 50%;"></td>
-                        <td>{{ $u->nama }}</td>
                         @if ($u->jenis_kelamin === 'L')
-                            <td><i class="ri-men-line text-primary"></i> ( {{ $u->jenis_kelamin }} )</td>
+                            <td>{{ $u->nama }} <i class="ri-men-line text-primary"></i> ( {{ $u->jenis_kelamin }} )</td>
                         @else
-                            <td><i class="ri-women-line" style="color: rgb(231, 79, 191);"></i> ( {{ $u->jenis_kelamin }} )</td>
+                            <td>{{ $u->nama }} <i class="ri-women-line" style="color: rgb(231, 79, 191);"></i> ( {{ $u->jenis_kelamin }} )</td>
                         @endif
                         <td>{{ $u->nim }}</td>
                         <td>{{ $u->prodi }}</td>
                         <td>{{ $u->nohp }}</td>
                         <td>{{ $u->nohp_orangtua }}</td>
+                        @if ($u->status === 0)
+                            <td><span class="badge rounded-pill text-bg-warning text-white">Pending</span></td>
+                        @else
+                            <td><span class="badge rounded-pill text-bg-success">Selesai</span></td>
+                        @endif
                         <td>
                             <a href="{{ route('send-email', $u->id) }}" class="btn btn-sm btn-success text-white me-2 mb-2 mt-2"><i class="ri-mail-send-line"></i></a>
                             <a href="{{ route('oprec.show', $u->id) }}" class="btn btn-sm btn-info text-white me-2 mb-2 mt-2"><i class="ri-information-2-line"></i></a>

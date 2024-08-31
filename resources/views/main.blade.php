@@ -1,4 +1,44 @@
 @section('title', 'WAPALA IT Telkom')
+@section('css')
+    <style>
+        .wrap{
+            background-image:url('{{ asset('jumbotron.jpg') }}');
+            width:100%;
+            height:100vh;
+            background-size:cover;
+            position: relative;
+            background-position: center; /* Center the background image */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Ubah nilai alpha (0.5) sesuai dengan kebutuhan Anda */
+        }
+
+        .wrap .jumbotron {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            padding: 20px; /* Add padding to avoid text touching edges on small screens */
+        }
+
+        .parallax-window {
+        min-height: 315px;
+        background: transparent;
+        }
+
+        .divisi{
+            width: 130px;
+            height: 130px;
+        }
+    </style>
+@endsection
 @section('jumbotron')
 <div class="jumbotron m-0">
                 <h1 class="display-3 fw-bold">WAPALA IT Telkom</h1>
@@ -43,7 +83,7 @@
     </div>
 </section>
 <section class="mt-1">
-    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('Desain tanpa judul (3).png') }}">
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('parallaxx.png') }}">
         <div class="container text-center py-5 my-5">
             <div class="row">
                 @foreach ($divisi as $d)

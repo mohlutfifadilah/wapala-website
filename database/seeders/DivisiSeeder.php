@@ -16,17 +16,17 @@ class DivisiSeeder extends Seeder
     {
         //
         \App\Models\Divisi::create([
-            'logo' => null,
+            'logo' => '13.png',
             'nama_divisi' => 'Rock Climbing',
         ]);
 
         \App\Models\Divisi::create([
-            'logo' => null,
+            'logo' => '15.png',
             'nama_divisi' => 'Gunung Hutan',
         ]);
 
         \App\Models\Divisi::create([
-            'logo' => null,
+            'logo' => '17.png',
             'nama_divisi' => 'Caving',
         ]);
     }

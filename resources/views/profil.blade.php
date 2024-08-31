@@ -1,4 +1,58 @@
 @section('title', 'Profil - WAPALA IT Telkom')
+@section('css')
+    <style>
+    .wrap{
+        background-image:url('{{ asset('jumbotron.jpg') }}');
+        width:100%;
+        height:40vh;
+        background-size:cover;
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Ubah nilai alpha (0.5) sesuai dengan kebutuhan Anda */
+    }
+
+    .wrap .jumbotron {
+      position: absolute; /* Absolute positioning for text */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white; /* Adjust color for visibility */
+      text-align: center; /* Center align text */
+    }
+
+    #total{
+        margin: 30px auto;
+        margin-top: 0;
+        width: 70px;
+        height: 70px;
+    }
+    #ak{
+        margin: 30px auto;
+        margin-top: 0;
+        width: 70px;
+        height: 70px;
+    }
+    #alb{
+        margin: 30px auto;
+        margin-top: 0;
+        width: 70px;
+        height: 70px;
+    }
+    #ab{
+        margin: 30px auto;
+        margin-top: 0;
+        width: 70px;
+        height: 70px;
+    }
+    </style>
+@endsection
 @section('jumbotron')
 <div class="jumbotron mt-5 pt-5">
                 <h1 class="display-3 fw-bold">Profil</h1>
@@ -8,7 +62,7 @@
             </div>
             <div class="banner"></div>
 @endsection
-@include('template.header-profil')
+@include('template.header')
         <section class="my-4">
             <div class="container">
                 <div class="row">
@@ -44,13 +98,13 @@
                                 <div id="ab"></div>
                             </div>
                             <div class="col-md-8">
-                                <h5 class="mt-2 mb-0 pt-1">Total Keseluruhan Anggota</h5>
+                                <h5 class="mt-3 mb-0 pt-1">Total Keseluruhan Anggota</h5>
                                 <small class="mb-5">Total seluruh anggota yang ada di WAPALA IT Telkom</small>
-                                <h5 class="mt-5 mb-0 pt-1">Anggota Kehormatan</h5>
+                                <h5 class="mb-0" style="margin-top: 65px;">Anggota Kehormatan</h5>
                                 <small class="mb-5">Total seluruh Anggota Kehormatan</small>
-                                <h5 class="mt-5 mb-0 pt-1">Anggota Luar Biasa</h5>
+                                <h5 class="mb-0" style="margin-top: 65px;">Anggota Luar Biasa</h5>
                                 <small class="mb-5">Total seluruh Anggota Luar Biasa</small>
-                                <h5 class="mt-5 mb-0 pt-1">Anggota Biasa</h5>
+                                <h5 class="mb-0" style="margin-top: 65px;">Anggota Biasa</h5>
                                 <small class="mb-5">Total seluruh Anggota Biasa</small>
                             </div>
                         </div>
@@ -60,7 +114,7 @@
         </section>
         <section class="my-5">
             <div class="row">
-                <div class="col">
+                <div class="col text-center">
                     <img src="{{ asset('arti-logo2.png') }}" alt="" class="img-fluid">
                 </div>
             </div>

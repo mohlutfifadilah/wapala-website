@@ -24,67 +24,6 @@
             font-weight: bold;
             color: #87ceeb;
         }
-        .wrap{
-  background-image:url('{{ asset('jumbotron.jpg') }}');
-  width:100%;
-  height:40vh;
-  background-size:cover;
-  position: relative;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Ubah nilai alpha (0.5) sesuai dengan kebutuhan Anda */
-}
-
-/* Navbar transparan */
-    .navbar {
-        background-color: transparent !important;
-        position: absolute;
-    }
-    .nav-link {
-        color: #fff; /* Warna teks */
-        margin:  0 20px; /* Jarak antar item navbar */
-    }
-    .wrap .jumbotron {
-      position: absolute; /* Absolute positioning for text */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white; /* Adjust color for visibility */
-      text-align: center; /* Center align text */
-    }
-    .parallax-window {
-    min-height: 400px;
-    background: transparent;
-}
-#total{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#ak{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#alb{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
-#ab{
-    margin: 30px auto;
-    margin-top: 0;
-    width: 70px;
-    height: 70px;
-}
     </style>
   </head>
   <body>

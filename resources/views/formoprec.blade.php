@@ -1,4 +1,57 @@
 @section('title', 'Open Recruitment - WAPALA IT Telkom')
+@section('css')
+    <style>
+        .wrap{
+            background-image:url('{{ asset('jumbotron.jpg') }}');
+            width:100%;
+            height:40vh;
+            background-size:cover;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Ubah nilai alpha (0.5) sesuai dengan kebutuhan Anda */
+        }
+
+        .wrap .jumbotron {
+        position: absolute; /* Absolute positioning for text */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white; /* Adjust color for visibility */
+        text-align: center; /* Center align text */
+        }
+        .portfolio-menu{
+            text-align:center;
+        }
+        .portfolio-menu ul li{
+            display:inline-block;
+            margin:0;
+            list-style:none;
+            padding:10px 15px;
+            cursor:pointer;
+            -webkit-transition:all 05s ease;
+            -moz-transition:all 05s ease;
+            -ms-transition:all 05s ease;
+            -o-transition:all 05s ease;
+            transition:all .5s ease;
+        }
+
+        .portfolio-item{
+            /*width:100%;*/
+        }
+        .portfolio-item .item{
+            /*width:303px;*/
+            float:left;
+            margin-bottom:10px;
+        }
+    </style>
+@endsection
 @section('jumbotron')
 <div class="jumbotron mt-5 pt-5">
                 <h1 class="display-3 fw-bold">Open Recruitment</h1>
@@ -8,12 +61,12 @@
             </div>
             <div class="banner"></div>
 @endsection
-@include('template.header-oprec')
+@include('template.header')
         <section class="my-4">
             <div class="container">
                 <div class="row">
                     <h2 class="text-center">SILAHKAN ISI FORMULIR :</h2>
-                    <div class="col-6">
+                    <div class="col">
                         <form class="g-3" method="POST" action="{{ route('pendaftaran.store') }}" enctype="multipart/form-data">
                             @csrf
                             <h4>Data Pribadi :</h4>

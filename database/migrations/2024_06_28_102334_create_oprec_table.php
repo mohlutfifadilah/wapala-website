@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('pengalaman_organisasi')->nullable();
             $table->string('golongan_darah')->nullable();
             $table->string('riwayat_penyakit')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

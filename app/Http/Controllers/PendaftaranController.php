@@ -161,6 +161,7 @@ class PendaftaranController extends Controller
                 'riwayat_penyakit' => $request->riwayat_penyakit,
                 'nama_orangtua' => $request->nama_orangtua,
                 'nohp_orangtua' => $request->nohp_orangtua,
+                'status' => 0
             ]);
         } else {
             Oprec::create([
@@ -179,6 +180,7 @@ class PendaftaranController extends Controller
                 'riwayat_penyakit' => $request->riwayat_penyakit,
                 'nama_orangtua' => $request->nama_orangtua,
                 'nohp_orangtua' => $request->nohp_orangtua,
+                'status' => 0
             ]);
         }
 
