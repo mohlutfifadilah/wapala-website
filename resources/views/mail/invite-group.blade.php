@@ -60,7 +60,7 @@
                             <tr>
                                 <td>Status</td>
                                 <td>:</td>
-                                <td><b>Calon Anggota</b></td>
+                                <td><b>Calon Siswa</b></td>
                             </tr>
                         </table>
                         <br><br>

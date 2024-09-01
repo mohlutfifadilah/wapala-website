@@ -121,7 +121,7 @@ class OprecController extends Controller
         $nama = $oprec->nama;
         $nim = $oprec->nim;
         $prodi = $oprec->prodi;
-        $link = "https://www.freecodecamp.org/news/how-to-create-a-responsive-html-email-template/";
+        $link = "https://chat.whatsapp.com/JZTSSFjyASL132ZP0JRppJ";
 
         $data["email"] = $oprec->nim . '@ittelkom-pwt.ac.id';
         $data["title"] = "Open Recruitment Wapala " . now()->year;
@@ -136,6 +136,9 @@ class OprecController extends Controller
             $message->subject($data["title"]);
         });;
 
+        $oprec->update([
+            'status' => 1,
+        ]);
 
         return redirect()->route('oprec.index')->withSuccess('Terkirim');
     }

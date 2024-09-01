@@ -165,7 +165,7 @@
                         <h5><b>Riwayat Penyakit :</b></h5> <br> {{ $oprec->riwayat_penyakit }}
                     </div>
                 </div>
-                <h5 class="card-title">Data Orang Tua</h5>
+                <h5 class="card-title mt-3">Data Orang Tua</h5>
                 <hr>
                 <div class="row">
                     <div class="col-sm-3">

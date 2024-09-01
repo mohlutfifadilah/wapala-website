@@ -74,15 +74,15 @@
                         <td>{{ $u->prodi }}</td>
                         <td>{{ $u->nohp }}</td>
                         <td>{{ $u->nohp_orangtua }}</td>
-                        @if ($u->status === 0)
-                            <td><span class="badge rounded-pill text-bg-warning text-white">Pending</span></td>
-                        @else
+                        @if ($u->status != 0)
                             <td><span class="badge rounded-pill text-bg-success">Selesai</span></td>
+                        @else
+                            <td><span class="badge rounded-pill text-bg-warning text-white">Pending</span></td>
                         @endif
                         <td>
                             <a href="{{ route('send-email', $u->id) }}" class="btn btn-sm btn-success text-white me-2 mb-2 mt-2"><i class="ri-mail-send-line"></i></a>
                             <a href="{{ route('oprec.show', $u->id) }}" class="btn btn-sm btn-info text-white me-2 mb-2 mt-2"><i class="ri-information-2-line"></i></a>
-                            <a href="{{ route('oprec.edit', $u->id) }}" class="btn btn-sm btn-warning text-white me-2 mb-2 mt-2"><i class="ri-edit-box-line"></i></a>
+                            {{-- <a href="{{ route('oprec.edit', $u->id) }}" class="btn btn-sm btn-warning text-white me-2 mb-2 mt-2"><i class="ri-edit-box-line"></i></a> --}}
                             <form action="{{ route('oprec.destroy', $u->id) }}" method="post">
                             @csrf
                             @method('DELETE')
