@@ -32,6 +32,10 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
+  <!-- Calendar JS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.simple-calendar.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/simple-calendar.css') }}" />
 
 </head>
 
