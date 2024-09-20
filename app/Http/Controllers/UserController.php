@@ -47,10 +47,6 @@ class UserController extends Controller
     {
         //
 
-        // Cek apakah embed HTML sudah ada di tabel desa
-        if (User::where('nia', $request->nia)->exists()) {
-            return redirect()->back()->withInput()->with('error', 'NIA sudah digunakan!');
-        }
 
         // Validasi apakah input email valid
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
@@ -69,9 +65,17 @@ class UserController extends Controller
             return redirect()->route('user.create')->with('error', 'Status harus diisi');
         }
 
-        if (strlen($request->nia) !== 19) {
-            return redirect()->route('user.create')->with('error', 'Format NIA tidak sesuai');
+        if($request->status != 1){
+            // Cek apakah embed HTML sudah ada di tabel desa
+            if (User::where('nia', $request->nia)->exists()) {
+                return redirect()->back()->withInput()->with('error', 'NIA sudah digunakan!');
+            }
+
+            if (strlen($request->nia) !== 19) {
+                return redirect()->route('user.create')->with('error', 'Format NIA tidak sesuai');
+            }
         }
+
 
         User::create([
             'nama' => $request->nama,
@@ -148,8 +152,10 @@ class UserController extends Controller
           $id_status = $status->id;
         }
 
-        if (strlen($request->nia) !== 19) {
-            return redirect()->back()->with('error', 'Format NIA tidak sesuai');
+        if($request->status != 1){
+            if (strlen($request->nia) !== 19) {
+                return redirect()->route('user.create')->with('error', 'Format NIA tidak sesuai');
+            }
         }
 
         // Lakukan validasi hanya jika ada perubahan email atau no_wa

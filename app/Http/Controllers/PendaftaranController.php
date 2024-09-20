@@ -79,6 +79,7 @@ class PendaftaranController extends Controller
             'jenis_kelamin' => 'required',
             'golongan_darah' => 'required',
             'nim' => 'required|numeric',
+            'email' => 'required',
             'prodi' => 'required',
             'agama' => 'required',
             'nohp' => 'required|numeric|min:10',
@@ -100,6 +101,7 @@ class PendaftaranController extends Controller
             'jenis_kelamin.required' => 'Jenis Kelamin harus diisi',
             'golongan_darah.required' => 'Golongan Darah harus diisi',
             'nim.required' => 'NIM harus diisi',
+            'email.required' => 'Email harus diisi',
             'nim.numeric' => 'NIM harus berisi angka',
             'prodi.required' => 'Prodi harus diisi',
             'agama.required' => 'Agama harus diisi',
@@ -127,6 +129,15 @@ class PendaftaranController extends Controller
             return redirect()->back()->withInput()->with('nim', 'NIM sudah digunakan!');
         }
 
+        // Validasi apakah input email valid
+        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            return redirect()->back()->with('email', 'Format Email tidak valid');
+        }
+
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->withInput()->with('email', 'Email sudah digunakan');
+        }
+
         if (Oprec::where('nohp', $request->nohp)->exists()) {
             return redirect()->back()->withInput()->with('nohp', 'No HP sudah digunakan!');
         }
@@ -151,6 +162,7 @@ class PendaftaranController extends Controller
                 'tempatTglLahir' => $request->tempat_lahir . ', ' . $tanggal_lahir,
                 'golongan_darah' => strtoupper($request->golongan_darah),
                 'nim' => $request->nim,
+                'email' => $request->email,
                 'prodi' => $request->prodi,
                 'agama' => $request->agama,
                 'nohp' => $request->nohp,
@@ -170,6 +182,7 @@ class PendaftaranController extends Controller
                 'tempatTglLahir' => $request->tempat_lahir . ', ' . $tanggal_lahir,
                 'golongan_darah' => strtoupper($request->golongan_darah),
                 'nim' => $request->nim,
+                'email' => $request->email,
                 'prodi' => $request->prodi,
                 'agama' => $request->agama,
                 'nohp' => $request->nohp,

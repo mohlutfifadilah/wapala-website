@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OprecExport;
 use App\Models\Oprec;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+
+use PDF;
 
 class OprecController extends Controller
 {
@@ -108,7 +112,7 @@ class OprecController extends Controller
 
     public function reset(){
 
-        $oprec = User::all();
+        $oprec = Oprec::all();
         $oprec->delete();
 
         return redirect()->route('oprec.index')->withSuccess('Data berhasil direset');
@@ -123,7 +127,7 @@ class OprecController extends Controller
         $prodi = $oprec->prodi;
         $link = "https://chat.whatsapp.com/JZTSSFjyASL132ZP0JRppJ";
 
-        $data["email"] = $oprec->nim . '@ittelkom-pwt.ac.id';
+        $data["email"] = $oprec->email;
         $data["title"] = "Open Recruitment Wapala " . now()->year;
 
         Mail::send('mail.invite-group', [
@@ -141,5 +145,21 @@ class OprecController extends Controller
         ]);
 
         return redirect()->route('oprec.index')->withSuccess('Terkirim');
+    }
+
+    public function export_excel(){
+        return Excel::download(new OprecExport(),'oprec.xlsx');
+    }
+
+    public function export_pdf(){
+        // Mengambil data pegawai dengan kolom 'nama_lengkap' dan 'jabatan'
+        $oprec = Oprec::select('foto', 'nama', 'jenis_kelamin', 'tempatTglLahir', 'nim', 'prodi', 'agama', 'nohp', 'alamat_rumah', 'alamat_domisili', 'nama_orangtua', 'nohp_orangtua', 'motivasi', 'pengalaman_organisasi', 'golongan_darah', 'riwayat_penyakit')->get();
+
+    	$pdf = PDF::loadview('admin.oprec.export-pdf',['oprec'=>$oprec]);
+
+        // Mengatur orientasi landscape (array dengan ukuran kertas dan orientasi)
+        $pdf->setPaper('A4', 'landscape');
+        
+    	return $pdf->download('oprec.pdf');
     }
 }

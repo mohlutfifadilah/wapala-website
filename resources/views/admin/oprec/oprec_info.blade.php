@@ -99,6 +99,17 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
+                                <h5><b>Email</b></h5>
+                            </div>
+                            <div class="col-sm-1">
+                                <h5>:</h5>
+                            </div>
+                            <div class="col-sm-8">
+                                <p>{{ $oprec->email }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
                                 <h5><b>Program Studi</b></h5>
                             </div>
                             <div class="col-sm-1">

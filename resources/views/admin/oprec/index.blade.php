@@ -37,15 +37,29 @@
           <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Data Open Recruitment</h5>
-                {{-- <a href="{{ route('user.create') }}" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Tambah</a> --}}
-                <form method="POST" action="{{ route('open-oprec', Auth::user()->oprec) }}" id="recruitmentForm">
-                    @csrf
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="open_recruitment" {{ Auth::user()->oprec === 1 ? 'checked' : '' }} onchange="submitForm()">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Open Recruitment</label>
+                <div class="d-flex justify-content-between">
+                    <form method="POST" action="{{ route('open-oprec', Auth::user()->oprec) }}" id="recruitmentForm">
+                        @csrf
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="open_recruitment" {{ Auth::user()->oprec === 1 ? 'checked' : '' }} onchange="submitForm()">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Open Recruitment</label>
+                        </div>
+                    </form>
+
+                    <!-- Tombol Export -->
+                    <div>
+                        <a href="{{ route('reset-oprec') }}" class="btn btn-outline-danger btn-sm me-5 mb-2 mt-2" onclick="return confirm('Yakin akan mereset data ? Data Oprec akan terhapus seluruhnya');">
+                            <i class="ri-loop-right-line"></i> Reset Data
+                        </a>
+                        <a href="{{ route('oprec-export-excel') }}" class="btn btn-sm btn-success me-2 mb-2 mt-2">
+                            <i class="ri-file-excel-line"></i> Export Excel
+                        </a>
+                        <a href="{{ route('oprec-export-pdf') }}" class="btn btn-sm btn-danger me-2 mb-2 mt-2">
+                            <i class="ri-file-pdf-2-line"></i> Export PDF
+                        </a>
                     </div>
-                </form>
-                <a href="{{ route('reset-oprec') }}" class="btn btn-danger text-white me-2 mb-2 mt-2" onclick="return confirm('Yakin akan mereset data ? Data Oprec akan terhapus seluruhnya');">Reset Data</i></a>
+                </div>
+
               <div id="oprecTable">
                 <!-- Table with stripped rows -->
               <table class="table datatable">

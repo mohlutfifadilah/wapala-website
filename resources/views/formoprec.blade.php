@@ -185,6 +185,20 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-md-3">
+                                    <label for="email" class="form-label">Email</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control justNumber @if(session('email')) is-invalid @endif @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <div id="email" class="form-text text-danger">{{ $message }}</div>
+                                    @enderror
+                                    @if(session('email'))
+                                        <div id="email" class="form-text text-danger">{{ session('email') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-3">
                                     <label for="prodi" class="form-label">Program Studi</label>
                                 </div>
                                 <div class="col-md-9">

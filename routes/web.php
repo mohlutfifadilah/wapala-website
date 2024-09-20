@@ -64,8 +64,12 @@ Route::resource('prodi', ProdiController::class);
 Route::resource('angkatan', AngkatanController::class);
 Route::resource('kategori', KategoriController::class);
 Route::resource('galeri', GaleriController::class);
+
 Route::resource('oprec', OprecController::class);
 Route::post('/open-oprec/{oprec}', [OprecController::class, 'open'])->name('open-oprec');
 Route::post('/reset-oprec', [OprecController::class, 'reset'])->name('reset-oprec');
 Route::get('/send-email/{id}', [OprecController::class, 'sendEmail'])->name('send-email');
+
+Route::get('/export-excel', [OprecController::class, 'export_excel'])->name('oprec-export-excel');
+Route::get('/export-pdf', [OprecController::class, 'export_pdf'])->name('oprec-export-pdf');
 
