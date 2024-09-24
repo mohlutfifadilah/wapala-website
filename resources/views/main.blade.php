@@ -63,7 +63,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="{{ asset('siapakami.png') }}" class="img-fluid mx-auto" alt="" style="width: 480px; height: 480px;">
+                <img src="{{ asset('siapakami.png') }}" class="img-fluid mx-auto" alt="">
             </div>
             <div class="col mt-5 pt-3">
                 <h2 class="mb-4">Siapa Kami ?</h2>

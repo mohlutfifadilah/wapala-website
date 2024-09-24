@@ -37,7 +37,7 @@ Route::get('/', function () {
     }
 
     $divisi = Divisi::all();
-    $oprec = User::whereNull('nia')->first();
+    $oprec = User::find(1);
     return view('main', [ 'segment' => $segment,
                           'divisi' => $divisi,
                           'oprec' => $oprec
@@ -56,20 +56,22 @@ Route::resource('kontak', KontakController::class);
 Route::resource('/pendaftaran', PendaftaranController::class);
 
 # Admin
-Route::get('/dashboard',  [DashboardController::class, 'index']);
-Route::resource('user', UserController::class);
-Route::resource('divisi', DivisiController::class);
-Route::resource('status', StatusController::class);
-Route::resource('prodi', ProdiController::class);
-Route::resource('angkatan', AngkatanController::class);
-Route::resource('kategori', KategoriController::class);
-Route::resource('galeri', GaleriController::class);
+Route::middleware(['AdminIsValid'])->group(function(){
+    Route::get('/dashboard',  [DashboardController::class, 'index']);
+    Route::resource('user', UserController::class);
+    Route::resource('divisi', DivisiController::class);
+    Route::resource('status', StatusController::class);
+    Route::resource('prodi', ProdiController::class);
+    Route::resource('angkatan', AngkatanController::class);
+    Route::resource('kategori', KategoriController::class);
+    Route::resource('galeri', GaleriController::class);
 
-Route::resource('oprec', OprecController::class);
-Route::post('/open-oprec/{oprec}', [OprecController::class, 'open'])->name('open-oprec');
-Route::post('/reset-oprec', [OprecController::class, 'reset'])->name('reset-oprec');
-Route::get('/send-email/{id}', [OprecController::class, 'sendEmail'])->name('send-email');
+    Route::resource('oprec', OprecController::class);
+    Route::post('/open-oprec/{oprec}', [OprecController::class, 'open'])->name('open-oprec');
+    Route::post('/reset-oprec', [OprecController::class, 'reset'])->name('reset-oprec');
+    Route::get('/send-email/{id}', [OprecController::class, 'sendEmail'])->name('send-email');
 
-Route::get('/export-excel', [OprecController::class, 'export_excel'])->name('oprec-export-excel');
-Route::get('/export-pdf', [OprecController::class, 'export_pdf'])->name('oprec-export-pdf');
+    Route::get('/export-excel', [OprecController::class, 'export_excel'])->name('oprec-export-excel');
+    Route::get('/export-pdf', [OprecController::class, 'export_pdf'])->name('oprec-export-pdf');
+});
 
