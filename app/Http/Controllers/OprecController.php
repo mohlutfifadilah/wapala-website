@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\OprecExport;
 use App\Models\Oprec;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -155,11 +156,11 @@ class OprecController extends Controller
         // Mengambil data pegawai dengan kolom 'nama_lengkap' dan 'jabatan'
         $oprec = Oprec::select('foto', 'nama', 'jenis_kelamin', 'tempatTglLahir', 'nim', 'prodi', 'agama', 'nohp', 'alamat_rumah', 'alamat_domisili', 'nama_orangtua', 'nohp_orangtua', 'motivasi', 'pengalaman_organisasi', 'golongan_darah', 'riwayat_penyakit')->get();
 
-    	$pdf = PDF::loadview('admin.oprec.export-pdf',['oprec'=>$oprec]);
+    	$pdf = FacadePdf::loadview('admin.oprec.export-pdf',['oprec'=>$oprec]);
 
         // Mengatur orientasi landscape (array dengan ukuran kertas dan orientasi)
         $pdf->setPaper('A4', 'landscape');
-        
+
     	return $pdf->download('oprec.pdf');
     }
 }
