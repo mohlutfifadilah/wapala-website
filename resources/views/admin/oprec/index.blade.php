@@ -41,7 +41,7 @@
                     <form method="POST" action="{{ route('open-oprec', Auth::user()->oprec) }}" id="recruitmentForm">
                         @csrf
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="open_recruitment" {{ Auth::user()->oprec === 1 ? 'checked' : '' }} onchange="submitForm()">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="open_recruitment" {{ Auth::user()->oprec != 0 ? 'checked' : '' }} onchange="submitForm()">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Open Recruitment</label>
                         </div>
                     </form>

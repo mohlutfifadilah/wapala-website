@@ -43,7 +43,7 @@
 <div class="jumbotron m-0">
                 <h1 class="display-3 fw-bold">WAPALA IT Telkom</h1>
                 <p><em>~ Memayu Hayuning Bawana ~</em></p>
-                @if ($oprec->oprec === 1)
+                @if ($oprec->oprec != 0)
                     <small class="text-muted">Tertarik ? Daftar Sekarang Juga! </small><br>
                     <a href="{{ route('pendaftaran.index') }}" class="btn btn-primary mt-1">Open Recruitment {{ now()->year }}</a>
                 @endif
