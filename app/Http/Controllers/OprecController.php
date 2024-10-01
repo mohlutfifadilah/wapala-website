@@ -98,11 +98,11 @@ class OprecController extends Controller
     public function open($oprec){
 
         $admin = User::find(Auth::user()->id);
-        if ($oprec = 0){
+        if ($oprec != 1){
             $admin->update([
                 'oprec' => 1,
             ]);
-        }else if ($oprec = 1){
+        }else if ($oprec != 0){
             $admin->update([
                 'oprec' => 0,
             ]);

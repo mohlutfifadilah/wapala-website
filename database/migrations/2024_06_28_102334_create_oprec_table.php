@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('prodi')->nullable();
             $table->string('agama')->nullable();
             $table->string('nohp')->nullable();
+            $table->string('email')->nullable();
             $table->string('alamat_rumah')->nullable();
             $table->string('alamat_domisili')->nullable();
             $table->string('nama_orangtua')->nullable();

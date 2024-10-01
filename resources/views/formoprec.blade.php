@@ -188,7 +188,7 @@
                                     <label for="email" class="form-label">Email</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control justNumber @if(session('email')) is-invalid @endif @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                                    <input type="text" class="form-control @if(session('email')) is-invalid @endif @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                                     @error('email')
                                         <div id="email" class="form-text text-danger">{{ $message }}</div>
                                     @enderror

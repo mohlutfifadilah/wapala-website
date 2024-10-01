@@ -151,6 +151,15 @@ class PendaftaranController extends Controller
         $tanggal_lahir = Carbon::createFromFormat('Y-m-d', $request->tanggal_lahir)->translatedFormat('j F Y');
 
         if ($request->file('foto')) {
+            // Ambil ukuran file dalam bytes
+            $fileSize = $request->file('foto')->getSize();
+
+            // Periksa apakah ukuran file melebihi batas maksimum (2 MB)
+            if ($fileSize > 2 * 1024 * 1024) {
+                // File terlalu besar, kembalikan respons dengan pesan kesalahan
+                return redirect()->back()->with('error', 'Ukuran file tidak lebih dari 2 mb');
+            }
+
             $file = $request->file('foto');
             $foto = $request->file('foto')->store('oprec');
             $file->move('storage/oprec/', $foto);
@@ -175,29 +184,9 @@ class PendaftaranController extends Controller
                 'nohp_orangtua' => $request->nohp_orangtua,
                 'status' => 0
             ]);
-        } else {
-            Oprec::create([
-                'nama' => $request->nama_lengkap,
-                'jenis_kelamin' => strtoupper($request->jenis_kelamin),
-                'tempatTglLahir' => $request->tempat_lahir . ', ' . $tanggal_lahir,
-                'golongan_darah' => strtoupper($request->golongan_darah),
-                'nim' => $request->nim,
-                'email' => $request->email,
-                'prodi' => $request->prodi,
-                'agama' => $request->agama,
-                'nohp' => $request->nohp,
-                'alamat_rumah' => $request->alamat_rumah,
-                'alamat_domisili' => $request->alamat_domisili,
-                'motivasi' => $request->motivasi,
-                'pengalaman_organisasi' => $request->pengalaman_organisasi,
-                'riwayat_penyakit' => $request->riwayat_penyakit,
-                'nama_orangtua' => $request->nama_orangtua,
-                'nohp_orangtua' => $request->nohp_orangtua,
-                'status' => 0
-            ]);
         }
 
-        return redirect('/')->with(['title' => 'Open Recruitment 2024 Wapala IT Telkom', 'success' => 'Pendaftaran Berhasil !','message' => 'Pendaftaran Berhasil!, <br> Informasi selanjutnya akan dikirim melalui email kampus, harap cek email kampus secara berkala <br><br> Salam Lestari!']);
+        return redirect('/')->with(['title' => 'Open Recruitment 2024 Wapala IT Telkom', 'success' => 'Pendaftaran Berhasil !','message' => 'Pendaftaran Berhasil!, <br> Informasi selanjutnya akan dikirim melalui email, harap cek email secara berkala <br><br> Salam Lestari!']);
     }
 
     /**
