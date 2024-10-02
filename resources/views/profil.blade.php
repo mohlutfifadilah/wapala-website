@@ -119,12 +119,12 @@
                 </div>
             </div>
         </section>
-        <section class="my-5">
+       <section class="my-5">
             <div class="container">
-                <div class="row row-cols-4">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
                     @foreach ($angkatan as $a)
                         <div class="col">
-                            <div class="card" style="width: 16rem;">
+                            <div class="card" style="width: 100%;">
                                 <img src="{{ asset('storage/foto-angkatan/' . $a->foto) }}" class="card-img-top" alt="...">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $a->nama_angkatan }}</h5>

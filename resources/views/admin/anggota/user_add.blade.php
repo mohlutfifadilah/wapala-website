@@ -104,7 +104,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingnia" placeholder="Password" value="NIA:WPL." oninput="handleInput(this)" onfocus="handleFocus(this)" name="nia" required>
+                    <input type="text" class="form-control" id="floatingnia" placeholder="Password" value="" name="nia" required>
                     <label for="floatingnia">NIA</label>
                     <small class="text-danger ms-2">* NIA:WPL.**.***.****</small>
                     <small class="float-end me-3"><a href="" id="resetNIA">Reset</a></small>
@@ -123,14 +123,14 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" value="{{ old('email') }}">
                     <label for="floatingEmail">Email</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
-                    <label for="floatingPassword">Password</label>
+                    <input type="text" class="form-control" id="floatingNo" placeholder="No Handphone" name="no_hp" value="{{ old('no_hp') }}">
+                    <label for="floatingNo">No Handphone</label>
                   </div>
                 </div>
                 <div class="text-end">
@@ -161,35 +161,40 @@
         input.focus();
       });
 
-    function handleInput(input) {
-        // Mengambil nilai input
-        let value = input.value;
+        $(document).ready(function() {
+            $('.justNumber').on('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+        });
+    // function handleInput(input) {
+    //     // Mengambil nilai input
+    //     let value = input.value;
 
-        // Pisahkan nilai input menjadi array kata
-        let words = value.split(' ');
+    //     // Pisahkan nilai input menjadi array kata
+    //     let words = value.split(' ');
 
-        // Jika ada kata yang dihapus (panjang array kurang dari 4)
-        if (value.length < 8) {
-            // Ganti nilai input kembali menjadi "NIA:WPL."
-            input.value = 'NIA:WPL.';
-        }
-        // Mengubah nilai input berdasarkan panjang karakter
-        if (value.length === 10) {
-            // Tambahkan dua digit pertama nomor
-            input.value = value + '.';
-        } else if (value.length === 14) {
-            // Tambahkan tanda titik setelah dua digit berikutnya
-            input.value = value + '.';
-        } else if (value.length === 18) {
-            // Tambahkan tanda titik setelah tiga digit berikutnya
-            input.value = value;
-        }
-    }
+    //     // Jika ada kata yang dihapus (panjang array kurang dari 4)
+    //     if (value.length < 8) {
+    //         // Ganti nilai input kembali menjadi "NIA:WPL."
+    //         input.value = 'NIA:WPL.';
+    //     }
+    //     // Mengubah nilai input berdasarkan panjang karakter
+    //     if (value.length === 10) {
+    //         // Tambahkan dua digit pertama nomor
+    //         input.value = value + '.';
+    //     } else if (value.length === 14) {
+    //         // Tambahkan tanda titik setelah dua digit berikutnya
+    //         input.value = value + '.';
+    //     } else if (value.length === 18) {
+    //         // Tambahkan tanda titik setelah tiga digit berikutnya
+    //         input.value = value;
+    //     }
+    // }
 
-    function handleFocus(input) {
-        // Memastikan bahwa kursor berada di awal input
-        input.selectionStart = input.selectionEnd = input.value.indexOf(':') + 1;
-    }
+    // function handleFocus(input) {
+    //     // Memastikan bahwa kursor berada di awal input
+    //     input.selectionStart = input.selectionEnd = input.value.indexOf(':') + 1;
+    // }
 
     // function handleKeyDown(event) {
     //     // Mendapatkan key yang ditekan

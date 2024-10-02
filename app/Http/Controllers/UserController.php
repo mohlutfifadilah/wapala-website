@@ -85,7 +85,8 @@ class UserController extends Controller
             'nia' => $request->nia,
             'id_status' => $request->status,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'no_hp' => $request->no_hp,
+            'password' => Hash::make('ahaha'),
         ]);
 
         return redirect()->route('user.index')->withSuccess('Data Anggota berhasil ditambahkan');
@@ -179,7 +180,8 @@ class UserController extends Controller
             'nia' => $request->nia,
             'id_status' => $id_status,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'no_hp' => $request->no_hp,
+            'password' => Hash::make('ahaha'),
         ]);
 
         return redirect()->route('user.index')->withSuccess('Data Anggota berhasil diedit');

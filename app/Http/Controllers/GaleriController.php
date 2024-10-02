@@ -169,7 +169,7 @@ class GaleriController extends Controller
         if($galeri->foto){
             unlink(storage_path('app/galeri/' . $galeri->foto));
             unlink(public_path('storage/galeri/' . $galeri->foto));
-          }
+        }
         $galeri->delete();
 
         return redirect()->route('galeri.index')->withSuccess('Data Galeri berhasil dihapus');

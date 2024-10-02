@@ -47,10 +47,13 @@
                     </form>
 
                     <!-- Tombol Export -->
+                        <form action="{{ route('reset-oprec') }}" method="POST">
+                            @csrf
                     <div>
-                        <a href="{{ route('reset-oprec') }}" class="btn btn-outline-danger btn-sm me-5 mb-2 mt-2" onclick="return confirm('Yakin akan mereset data ? Data Oprec akan terhapus seluruhnya');">
-                            <i class="ri-loop-right-line"></i> Reset Data
-                        </a>
+                                <button type="submit" href="{{ route('reset-oprec') }}" class="btn btn-outline-danger btn-sm me-5 mb-2 mt-2" onclick="return confirm('Yakin akan mereset data ? Data Oprec akan terhapus seluruhnya');">
+                                <i class="ri-loop-right-line"></i> Reset Data
+                            </button>
+                        </form>
                         <a href="{{ route('oprec-export-excel') }}" class="btn btn-sm btn-success me-2 mb-2 mt-2">
                             <i class="ri-file-excel-line"></i> Export Excel
                         </a>

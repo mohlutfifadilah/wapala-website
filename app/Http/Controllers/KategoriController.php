@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galeri;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -99,7 +100,39 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         //
+        // Temukan kategori berdasarkan ID
         $kategori = Kategori::find($id);
+
+        if (!$kategori) {
+            return redirect()->back()->withErrors('Kategori tidak ditemukan.');
+        }
+
+        // Ambil semua galeri yang terkait dengan kategori yang akan dihapus
+        $galeriList = Galeri::where('id_kategori', $id)->get();
+
+        // Iterasi setiap galeri dan hapus foto serta row galeri
+        foreach ($galeriList as $galeri) {
+            // Cek apakah foto galeri ada
+            if ($galeri->foto) {
+                // Hapus file dari storage lokal (dari storage dan public path)
+                $storagePath = storage_path('app/galeri/' . $galeri->foto);
+                $publicPath = public_path('storage/galeri/' . $galeri->foto);
+
+                // Cek apakah file ada di lokasi storage dan public sebelum menghapusnya
+                if (file_exists($storagePath)) {
+                    unlink($storagePath);
+                }
+
+                if (file_exists($publicPath)) {
+                    unlink($publicPath);
+                }
+            }
+
+            // Hapus galeri dari database
+            $galeri->delete();
+        }
+
+        // Hapus kategori setelah galeri yang terkait sudah dihapus
         $kategori->delete();
 
         return redirect()->route('kategori.index')->withSuccess('Data Kategori berhasil dihapus');

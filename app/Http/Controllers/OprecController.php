@@ -113,8 +113,7 @@ class OprecController extends Controller
 
     public function reset(){
 
-        $oprec = Oprec::all();
-        $oprec->delete();
+        Oprec::truncate();
 
         return redirect()->route('oprec.index')->withSuccess('Data berhasil direset');
     }

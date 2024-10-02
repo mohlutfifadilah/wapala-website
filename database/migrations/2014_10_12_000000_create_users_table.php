@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('nia')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('email')->unique();
+            $table->integer('no_hp')->nullable();
             $table->integer('oprec')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
