@@ -1,8 +1,8 @@
-@section('title', 'WAPALA IT Telkom')
+@section('title', 'WAPALA Telkom University')
 @section('css')
     <style>
         .wrap{
-            background-image:url('{{ asset('jumbotron.jpg') }}');
+            background-image:url('{{ asset('jumbotron2.jpg') }}');
             width:100%;
             height:100vh;
             background-size:cover;
@@ -41,8 +41,8 @@
 @endsection
 @section('jumbotron')
 <div class="jumbotron m-0">
-                <h1 class="display-3 fw-bold">WAPALA IT Telkom</h1>
-                <p><em>~ Memayu Hayuning Bawana ~</em></p>
+                <h1 class="display-3 fw-bold">WAPALA Telkom University</h1>
+                <p><em>~ Hamemayu Hayuning Bawana ~</em></p>
                 @if ($oprec->oprec != 0)
                     <small class="text-muted">Tertarik ? Daftar Sekarang Juga! </small><br>
                     <a href="{{ route('pendaftaran.index') }}" class="btn btn-primary mt-1">Open Recruitment {{ now()->year }}</a>
@@ -65,12 +65,16 @@
             <div class="col">
                 <img src="{{ asset('siapakami.png') }}" class="img-fluid mx-auto" alt="">
             </div>
-            <div class="col mt-5 pt-3">
-                <h2 class="mb-4">Siapa Kami ?</h2>
+            <div class="col mt-5 pt-5">
+                <h2 class="mb-4 mt-5 pt-5">Siapa Kami ?</h2>
                 <p>
-                    Kami adalah Wapala IT Telkom, WAPALA (Wahana Pencinta Alam) dibentuk pada tanggal 28 September 2004 <br> <br>
-                    28 September 2004 : WAPALA AKATEL <br> 28 September 2013 : WAPALA STT TELEMATIKA TELKOM <br> 28 September 2017 : WAPALA IT Telkom.
+                    Kami adalah WAPALA (Wahana Pencinta Alam) dibentuk pada 28 September 2004 dengan nama Wapala Akatel
                 </p>
+                <ul>
+                    <li> ⁠28 September 2013 : WAPALA STT TELEMATIKA TELKOM</li>
+                    <li> ⁠16 September 2017 : WAPALA IT Telkom</li>
+                    <li> ⁠04 Oktober 2024 : WAPALA Telkom University</li>
+                </ul>
                 <small class="mt-5 text-italic text-danger">
                     Ragu-ragu harap kembali!
                 </small>

@@ -81,7 +81,7 @@
                 <tbody>
                   @foreach ($oprec as $u)
                     <tr>
-                        <td><img src="{{ asset('/storage/oprec/' . $u->foto) }}" class="img-fluid" alt="" style="width: 60px; height: 60px; border-radius: 50%;"></td>
+                        <td><img src="{{ asset('/storage/oprec/' . $u->foto) }}" class="img-fluid" alt="" style="width: 80px; height: 100px; border-radius: 50%;"></td>
                         @if ($u->jenis_kelamin === 'L')
                             <td>{{ $u->nama }} <i class="ri-men-line text-primary"></i> ( {{ $u->jenis_kelamin }} )</td>
                         @else

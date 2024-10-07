@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-    <link rel="icon" href="{{ asset('Logo WAPALA.png') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     <style>
         .btn-primary {
            background-color: #87ceeb;
@@ -75,7 +75,7 @@
                 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent w-100 position-absolute py-0 mt-0 px-5">
                     <div class="container-fluid">
                         <a class="navbar-brand fw-bold" href="#">
-                            <img src="{{ asset('Logo WAPALA.png') }}" class="mx-2 mt-3" alt="wapala" width="40" height="70">
+                            <img src="{{ asset('WAPALA TELKOM UNIVERSITY.png') }}" class="mx-2 mt-3" alt="wapala" width="40" height="70">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

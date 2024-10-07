@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $count_divisi = Divisi::all()->count();
         $count_oprec = Oprec::all()->count();
 
-        $oprec = Oprec::limit(5)->get();
+        $oprec = Oprec::limit(5)->orderBy('created_at', 'DESC')->get();
 
         // Mengambil data dan mengelompokkan berdasarkan tanggal pendaftaran
         $data_apex = DB::table('oprec')

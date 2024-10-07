@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-8">
                                 <h5 class="mt-3 mb-0 pt-1">Total Keseluruhan Anggota</h5>
-                                <small class="mb-5">Total seluruh anggota yang ada di WAPALA IT Telkom</small>
+                                <small class="mb-5">Total seluruh anggota yang ada di WAPALA Telkom University</small>
                                 <h5 class="mb-0" style="margin-top: 65px;">Anggota Kehormatan</h5>
                                 <small class="mb-5">Total seluruh Anggota Kehormatan</small>
                                 <h5 class="mb-0" style="margin-top: 65px;">Anggota Luar Biasa</h5>

@@ -23,7 +23,7 @@ class OprecController extends Controller
     public function index()
     {
         //
-        $oprec = Oprec::all();
+        $oprec = Oprec::orderBy('created_at', 'DESC')->get();
         return view('admin.oprec.index', compact('oprec'));
     }
 
@@ -93,6 +93,14 @@ class OprecController extends Controller
     public function destroy($id)
     {
         //
+        $oprec = Oprec::find($id);
+        if($oprec->foto){
+            unlink(storage_path('app/oprec/' . $oprec->foto));
+            unlink(public_path('storage/oprec/' . $oprec->foto));
+        }
+        $oprec->delete();
+
+        return redirect()->route('oprec.index')->withSuccess('Data Oprec berhasil dihapus');
     }
 
     public function open($oprec){

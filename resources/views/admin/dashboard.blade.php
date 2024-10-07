@@ -147,9 +147,10 @@
                                 curve: 'smooth',
                                 width: 2
                             },
-                            xaxis: {
+                           xaxis: {
                                 type: 'datetime',
-                                categories: dates, // Menggunakan tanggal dari controller
+                                categories: dates,
+                                tickAmount: 5,  // Batasi jumlah ticks atau label pada sumbu X
                                 labels: {
                                     formatter: function(value, timestamp) {
                                         const date = new Date(timestamp);
@@ -162,12 +163,12 @@
                                 }
                             },
                             yaxis: {
-                                min: 1, // Memulai dari 1
-                                max: 150, // Memaksimalkan hingga 150
-                                tickAmount: 15, // Menentukan jumlah ticks pada sumbu Y
+                                min: 1,
+                                max: 50,
+                                tickAmount: 5,  // Batasi jumlah ticks atau label pada sumbu Y
                                 labels: {
                                     formatter: function(value) {
-                                        return Math.floor(value); // Membulatkan nilai ke bawah
+                                        return Math.floor(value);
                                     }
                                 }
                             },

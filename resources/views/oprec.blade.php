@@ -45,10 +45,12 @@
                         <h2>Syarat Pendaftaran :</h2>
 
                         <ol>
-                            <li><p>Mahasiswa/i Aktif Institut Teknologi Telkom Purwokerto.</p></li>
+                            <li><p>Mahasiswa/i Aktif Institut Telkom University Purwokerto.</p></li>
                             <li><p>Bertekad menjadi seorang pencinta alam.</p></li>
                             <li><p>Tidak sedang dalam sanksi akademik.</p></li>
                             <li><p>Minimal studi Semester 1 dan maksimal Semester 3.</p></li>
+                            <li><p>Mengisi Formulir Pendaftaran</p></li>
+                            <li><p>Mengunggah pas foto 3x4</p></li>
                             <li><p>Bersedia mengikuti rangkaian Pendidikan Dasar Wapala dan menaati seluruh aturan yang berlaku.</p></li>
                         </ol>
                         <br>

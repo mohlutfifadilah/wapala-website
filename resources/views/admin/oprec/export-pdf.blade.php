@@ -53,7 +53,6 @@
         @foreach($oprec as $o)
         <tr>
             <td>{{ $i++ }}</td>
-            <!-- Menggunakan public_path untuk memastikan gambar bisa diakses oleh DOMPDF -->
             <td><img src="{{ public_path('storage/oprec/' . $o->foto) }}" alt="Foto" width="75" height="100"></td>
             <td>{{$o->nama}} / {{ $o->jenis_kelamin }}</td>
             <td>{{$o->tempatTglLahir}}</td>
