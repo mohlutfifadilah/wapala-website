@@ -63,7 +63,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <img src="{{ asset('siapakami.png') }}" class="img-fluid mx-auto" alt="">
+                <img src="{{ asset('siapakami2.png') }}" class="img-fluid mx-auto" alt="">
             </div>
             <div class="col mt-5 pt-5">
                 <h2 class="mb-4 mt-5 pt-5">Siapa Kami ?</h2>
